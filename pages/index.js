@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import { MainBanner } from "../components/main/MainBanner";
+import OclockIcon from "../components/main/OclockIcon";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +12,7 @@ export default function Home() {
     <>
       <Head>
         <MainBanner />
+        <OclockIcon />
       </Head>
     </>
   );
