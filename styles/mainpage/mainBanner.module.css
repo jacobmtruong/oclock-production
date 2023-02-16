@@ -76,7 +76,7 @@
 }
 
 .title p {
-  font-size: 90px;
+  font-size: 80px;
   font-weight: 0;
   color: white;
   text-transform: uppercase;
@@ -84,7 +84,7 @@
 }
 
 .title {
-  position: relative;
-  top: 55%;
+  position: absolute;
+  top: 75%;
   margin-left: 100px;
 }

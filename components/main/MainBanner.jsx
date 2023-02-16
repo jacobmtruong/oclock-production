@@ -24,7 +24,9 @@ export const MainBanner = () => {
       </div>
 
       <div className={classes.title}>
-        <p>O'clock</p>
+        <p>
+          O<span style={{ margin: "0px 20px" }}>'</span>clock
+        </p>
         <p>
           Production{" "}
           <span style={{ fontSize: "25px", float: "inline-start" }}>®</span>

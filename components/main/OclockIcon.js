@@ -1,5 +1,5 @@
 import React from "react";
-import icon from "../../styles/images/circleicon.jpg";
+import icon from "../../styles/images/circleicon.png";
 import classes from "../../styles/mainpage/oclockIcon.module.css";
 import Image from "next/image";
 
