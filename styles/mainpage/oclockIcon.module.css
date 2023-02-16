@@ -1,7 +1,7 @@
 .image {
   width: 25%;
   height: 20%;
-  animation: rotation 30s infinite linear;
+  animation: rotation 50s infinite linear;
 }
 
 @keyframes rotation {
