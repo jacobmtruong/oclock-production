@@ -19,7 +19,7 @@ export const MainBanner = () => {
           </ul>
         </div>
         <div className={classes.contact}>
-          <Link href="">contact</Link>
+          <Link href="">contact </Link>
         </div>
       </div>
 
