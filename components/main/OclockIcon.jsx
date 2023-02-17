@@ -10,7 +10,11 @@ const OclockIcon = () => {
       <Link href="" className={classes.button}>
         Book an Appointment
       </Link>
-      <Image src={icon} className={classes.image} />
+      <div className={classes.production}>
+        <p className={classes.text}>PR</p>
+        <Image src={icon} className={classes.image} />
+        <p className={classes.text}>DUCTION</p>
+      </div>
     </div>
   );
 };

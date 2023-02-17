@@ -1,5 +1,5 @@
 .image {
-  width: 30%;
+  width: 110%;
   height: 20%;
   animation: rotation 50s infinite linear;
 }
@@ -89,4 +89,15 @@
 .button:active::after {
   transition: 0s;
   transform: translate(0, 5%);
+}
+
+.production {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 130px;
+}
+
+.text {
+  font-size: 40px;
 }
