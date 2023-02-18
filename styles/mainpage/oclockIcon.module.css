@@ -1,5 +1,5 @@
 .image {
-  width: 110%;
+  width: 40vh;
   height: 20%;
   animation: rotation 50s infinite linear;
 }

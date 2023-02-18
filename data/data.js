@@ -1,4 +1,4 @@
-const pictures = {
+const photography = {
   food: [
     {
       id: 1,
@@ -64,5 +64,4 @@ const pictures = {
     },
   ],
 };
-
-console.log(pictures.food[0]);
+export default photography;
