@@ -1,6 +1,5 @@
-import { Carousel } from "react-responsive-carousel";
-import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { useState, useEffect } from "react";
+import Carousel from "react-bootstrap/Carousel";
 
 export const Food = () => {
   const [data, setData] = useState(null);
@@ -17,12 +16,18 @@ export const Food = () => {
   }, [data]);
 
   return (
-    <Carousel style={{ width: "20px" }}>
+    <Carousel>
       {data?.map((picture) => (
-        <div>
-          <img src={picture.url} alt={picture.name} />
-          <p className="legend">{picture.content}</p>
-        </div>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={picture.url}
+            alt={picture.content}
+          />
+          <Carousel.Caption>
+            <h3>{picture.content}</h3>
+          </Carousel.Caption>
+        </Carousel.Item>
       ))}
     </Carousel>
   );
