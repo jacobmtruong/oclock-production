@@ -2,23 +2,25 @@
   object-fit: cover;
   background-image: url("https://live.staticflickr.com/65535/52694050803_38ddde19fa_h.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
-  width: 100%;
+  border: none;
+  width: 100vw;
   height: 95vh;
-  animation: switch 30s infinite;
-  animation-delay: 10s;
+  animation: switch 25s infinite;
+  animation-delay: 1s;
   position: relative;
 }
 
 @keyframes switch {
   10% {
-    background-image: url("https://live.staticflickr.com/65535/52693970615_6e5271c775_h.jpg");
+    background-image: url("https://live.staticflickr.com/65535/52693161132_34ab292dd7_b.jpg");
   }
   40% {
-    background-image: url("https://live.staticflickr.com/65535/52693560371_af1c0bef59_h.jpg");
+    background-image: url("https://live.staticflickr.com/65535/52694172213_95024a0b21_b.jpg");
   }
   70% {
-    background-image: url("https://live.staticflickr.com/65535/52693825269_b155f26675_h.jpg");
+    background-image: url("https://live.staticflickr.com/65535/52694167823_8b76c3d5b8_k.jpg");
   }
 }
 
