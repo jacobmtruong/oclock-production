@@ -2,13 +2,13 @@ import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import classes from "../../styles/sliders/food.module.css";
 
-export const Food = () => {
+export const Beverage = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    fetch("/api/photography/food")
+    fetch("/api/photography/beverage")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
@@ -18,7 +18,7 @@ export const Food = () => {
 
   return (
     <div className={classes.container}>
-      <p style={{ color: "white" }}>Food Photography</p>
+      <p style={{ color: "white" }}>Beverage Photography</p>
       <Carousel className={classes.carousel} fade>
         {data?.map((picture) => (
           <Carousel.Item>

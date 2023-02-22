@@ -1,11 +1,22 @@
 .container {
   border: 1px solid black;
-  padding: 20px;
-  width: 95%;
-  margin: auto;
+  /* padding: 20px; */
+  width: 45%;
+  /* margin: auto; */
   background-color: rgb(36, 34, 29);
+  position: relative;
+  border: none;
 }
 
 .carousel {
-  width: 60%;
+  width: 100%;
+}
+
+.container > p {
+  text-align: center;
+  font-size: 25px;
+  font-weight: 300;
+  padding: 20px;
+  position: absolute;
+  z-index: 7;
 }

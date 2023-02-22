@@ -7,13 +7,13 @@ import Link from "next/link";
 const OclockIcon = () => {
   return (
     <div className={classes.container}>
-      <Link href="" className={classes.button}>
+      {/* <Link href="" className={classes.button}>
         Book an Appointment
-      </Link>
+      </Link> */}
       <div className={classes.production}>
-        <p className={classes.text}>PR</p>
+        {/* <p className={classes.text}>PR</p> */}
         <Image src={icon} className={classes.image} />
-        <p className={classes.text}>DUCTION</p>
+        {/* <p className={classes.text}>DUCTION</p> */}
       </div>
     </div>
   );

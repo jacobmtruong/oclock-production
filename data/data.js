@@ -76,12 +76,6 @@ const photography = {
     },
     {
       id: 4,
-      url: "",
-      content: "Beverage Photography",
-      favorite: false,
-    },
-    {
-      id: 4,
       url: "https://live.staticflickr.com/65535/52693119702_7c48febda6_h.jpg",
       content: "Beverage Photography",
       favorite: false,
