@@ -18,7 +18,7 @@ export const Food = () => {
 
   return (
     <div className={classes.container}>
-      <h3 style={{ color: "white" }}>Food</h3>
+      {/* <p style={{ color: "white" }}>Food Photography</p> */}
       <Carousel className={classes.carousel} fade>
         {data?.map((picture) => (
           <Carousel.Item>

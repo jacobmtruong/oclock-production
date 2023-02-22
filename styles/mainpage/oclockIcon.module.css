@@ -14,7 +14,8 @@
 }
 
 .container {
-  margin-top: 5vh;
+  margin-top: 10vh;
+  margin-bottom: 10vh;
   display: flex;
   justify-content: center;
   flex-direction: column;

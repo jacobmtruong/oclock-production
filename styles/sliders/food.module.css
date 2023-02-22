@@ -1,13 +1,11 @@
-.carousel {
-  width: 80%;
-  height: 50%;
-  margin: auto;
-}
-
 .container {
   border: 1px solid black;
   padding: 20px;
-  width: 70%;
+  width: 95%;
   margin: auto;
-  background-color: black;
+  background-color: rgb(36, 34, 29);
+}
+
+.carousel {
+  width: 60%;
 }
