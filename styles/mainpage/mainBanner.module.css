@@ -7,20 +7,26 @@
   border: none;
   width: 100vw;
   height: 95vh;
-  animation: switch 25s infinite;
-  animation-delay: 1s;
+  animation: switch 40s infinite;
+  animation-delay: 10s;
   position: relative;
 }
 
 @keyframes switch {
-  10% {
-    background-image: url("https://live.staticflickr.com/65535/52693161132_34ab292dd7_b.jpg");
+  10%,
+  20%,
+  30% {
+    background-image: url("https://live.staticflickr.com/65535/52693560371_fea8584439_k.jpg");
   }
-  40% {
-    background-image: url("https://live.staticflickr.com/65535/52694172213_95024a0b21_b.jpg");
+  40%,
+  50%,
+  60% {
+    background-image: url("https://live.staticflickr.com/65535/52693825269_9cf72f651b_k.jpg");
   }
-  70% {
-    background-image: url("https://live.staticflickr.com/65535/52694167823_8b76c3d5b8_k.jpg");
+  70%,
+  80%,
+  90% {
+    background-image: url("https://live.staticflickr.com/65535/52693970615_34efb6d5fd_k.jpg");
   }
 }
 
@@ -76,10 +82,12 @@
   font-weight: 0;
   color: white;
   text-transform: uppercase;
+  margin: 0;
+  padding: 0;
 }
 
 .title {
   position: absolute;
-  top: 75%;
+  top: 70%;
   margin-left: 110px;
 }

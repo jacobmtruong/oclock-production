@@ -1,0 +1,13 @@
+.carousel {
+  width: 80%;
+  height: 50%;
+  margin: auto;
+}
+
+.container {
+  border: 1px solid black;
+  padding: 20px;
+  width: 70%;
+  margin: auto;
+  background-color: black;
+}

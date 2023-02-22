@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
+import classes from "../../styles/sliders/food.module.css";
 
 export const Food = () => {
   const [data, setData] = useState(null);
@@ -16,19 +17,19 @@ export const Food = () => {
   }, [data]);
 
   return (
-    <Carousel>
-      {data?.map((picture) => (
-        <Carousel.Item>
-          <img
-            className="d-block w-100"
-            src={picture.url}
-            alt={picture.content}
-          />
-          <Carousel.Caption>
-            <h3>{picture.content}</h3>
-          </Carousel.Caption>
-        </Carousel.Item>
-      ))}
-    </Carousel>
+    <div className={classes.container}>
+      <h3 style={{ color: "white" }}>Food</h3>
+      <Carousel className={classes.carousel}>
+        {data?.map((picture) => (
+          <Carousel.Item>
+            <img
+              className="d-block w-100"
+              src={picture.url}
+              alt={picture.content}
+            />
+          </Carousel.Item>
+        ))}
+      </Carousel>
+    </div>
   );
 };
