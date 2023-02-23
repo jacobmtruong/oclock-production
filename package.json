@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "^13.1.6",
+    "@nextcss/reset": "^0.2.4-beta",
     "bootstrap": "^5.2.3",
     "next": "13.1.6",
     "nextjs-cors": "^2.1.2",

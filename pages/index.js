@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { MainBanner } from "../components/main/MainBanner";
-import icon from "../styles/images/circleicon.png";
+import "@nextcss/reset";
 import { LandscapeCarousel } from "../components/sliders/LandscapeCarousel.jsx";
 
 export default function Home() {
