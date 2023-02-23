@@ -1,78 +1,60 @@
 .maincontainer {
-  /* object-fit: cover;
-  background-image: url("https://live.staticflickr.com/65535/52694050803_38ddde19fa_h.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  animation: switch 40s infinite;
-  animation-delay: 10s;
-  position: relative; */
-  /* background-color: rgb(36, 34, 29); */
+  background-color: black;
   border: none;
   width: 100vw;
-  /* height: 95vh; */
-  margin: 5vh 0;
 }
-
-/* @keyframes switch {
-  10%,
-  20%,
-  30% {
-    background-image: url("https://live.staticflickr.com/65535/52693560371_fea8584439_k.jpg");
-  }
-  40%,
-  50%,
-  60% {
-    background-image: url("https://live.staticflickr.com/65535/52693825269_9cf72f651b_k.jpg");
-  }
-  70%,
-  80%,
-  90% {
-    background-image: url("https://live.staticflickr.com/65535/52693970615_34efb6d5fd_k.jpg");
-  }
-} */
-
-/* .contact {
-  border: 2px solid black;
-  padding: 10px 40px;
-  height: fit-content;
-  border-radius: 10px;
-  transition: 0.2s linear;
-} */
 
 .navcontainer {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding-top: 5vh;
 }
 .navbar {
   display: flex;
-  width: fit-content;
-  height: fit-content;
-  gap: 50px;
-  margin: 0;
   padding: 0;
+  gap: 50px;
 }
 
 .navbar a {
-  font-size: 30px;
+  font-size: 20px;
   text-decoration: none;
-  color: black;
-  font-weight: 700;
+  color: white;
+  font-weight: 800;
   text-transform: uppercase;
-  transition: 0.1s linear;
+  transition: 0.3s ease-in-out;
+  position: relative;
 }
 
-.navbar a:hover {
-  text-shadow: 1px 1px 30px #fff, 1px 1px 10px #ccc;
-  -moz-transition: all 0.2s ease-in;
-  -o-transition: all 0.2s ease-in;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+.navbar a::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+.navbar a:hover::before {
+  visibility: visible;
+  width: 100%;
 }
 
-.navbar li {
+.navbar > li {
   list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.banner {
+  background-image: url("https://live.staticflickr.com/65535/52694050803_38ddde19fa_h.jpg");
+  width: 100%;
+  height: 80vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .title p {
@@ -80,12 +62,15 @@
   font-weight: 0;
   color: white;
   text-transform: uppercase;
-  margin: 0;
-  padding: 0;
 }
 
 .title {
   position: absolute;
   top: 70%;
   margin-left: 110px;
+}
+
+.image {
+  height: 100%;
+  width: 30px;
 }

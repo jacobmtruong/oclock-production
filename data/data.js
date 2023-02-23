@@ -30,12 +30,12 @@ const photography = {
       content: "Food Photography",
       favorite: true,
     },
-    // {
-    //   id: 6,
-    //   url: "https://live.staticflickr.com/65535/52693627716_148a638a3e_h.jpg",
-    //   content: "Food Photography",
-    //   favorite: false,
-    // },
+    {
+      id: 6,
+      url: "https://live.staticflickr.com/65535/52694008824_166d7653bd_h.jpg",
+      content: "Food Photography",
+      favorite: false,
+    },
     // {
     //   id: 7,
     //   url: "https://live.staticflickr.com/65535/52694119243_e3216085cf_b.jpg",

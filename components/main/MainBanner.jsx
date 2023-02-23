@@ -1,6 +1,8 @@
 import classes from "../../styles/mainpage/mainBanner.module.css";
 import Link from "next/link";
 import OclockIcon from "../main/OclockIcon";
+import Image from "next/image";
+import igicon from "../../styles/images/ig-icon.png";
 export const MainBanner = () => {
   return (
     <div className={classes.maincontainer}>
@@ -17,20 +19,29 @@ export const MainBanner = () => {
             <Link href="">Portfolio</Link>
           </li>
           <li>
+            <p
+              style={{
+                color: "white",
+                fontSize: "20px",
+                padding: "0",
+                margin: "0",
+              }}
+            >
+              |
+            </p>
+          </li>
+          <li>
             <Link href="">Contact</Link>
+          </li>
+          <li>
+            <Link href="">
+              <Image src={igicon} className={classes.image} />
+            </Link>
           </li>
         </ul>
       </div>
 
-      {/* <div className={classes.title}>
-        <p>
-          O<span style={{ margin: "0px 20px" }}>'</span>clock
-        </p>
-        <p>
-          Production{" "}
-          <span style={{ fontSize: "25px", float: "inline-start" }}>®</span>
-        </p>
-      </div> */}
+      <div className={classes.banner}></div>
     </div>
   );
 };
