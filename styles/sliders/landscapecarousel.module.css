@@ -12,11 +12,17 @@
 }
 
 .carousel {
-  width: 50%;
+  width: 100vh;
+  height: 60vh;
 }
 
 .carouselitem > img {
   height: 60vh;
+}
+
+.caption > h3 {
+  font-size: 30px;
+  font-weight: bold;
 }
 
 .container > p {

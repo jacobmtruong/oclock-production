@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
-import classes from "../../styles/sliders/food.module.css";
+import classes from "../../styles/sliders/landscapecarousel.module.css";
 
 export const LandscapeCarousel = () => {
   const [data, setData] = useState(null);
@@ -22,6 +22,9 @@ export const LandscapeCarousel = () => {
       <Carousel className={classes.carousel} fade>
         {data?.map((picture) => (
           <Carousel.Item className={classes.carouselitem}>
+            <Carousel.Caption className={classes.caption}>
+              <h3>{picture.content}</h3>
+            </Carousel.Caption>
             <img
               className="d-block w-100"
               src={picture.url}
