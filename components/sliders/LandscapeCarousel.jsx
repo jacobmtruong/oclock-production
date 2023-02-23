@@ -3,13 +3,13 @@ import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import classes from "../../styles/sliders/food.module.css";
 
-export const Food = () => {
+export const LandscapeCarousel = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    fetch("/api/photography/product")
+    fetch("/api/photography/landscape")
       .then((res) => res.json())
       .then((data) => {
         setData(data);
