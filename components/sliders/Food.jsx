@@ -9,7 +9,7 @@ export const Food = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("/api/photography/food")
+    fetch("/api/photography/product")
       .then((res) => res.json())
       .then((data) => {
         setData(data);

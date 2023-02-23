@@ -118,12 +118,12 @@ const photography = {
       content: "Product Photography",
       favorite: false,
     },
-    {
-      id: 5,
-      url: "https://live.staticflickr.com/65535/52694174453_8cb155b6f7_h.jpg",
-      content: "Product Photography",
-      favorite: false,
-    },
+    // {
+    //   id: 5,
+    //   url: "https://live.staticflickr.com/65535/52694174453_8cb155b6f7_h.jpg",
+    //   content: "Product Photography",
+    //   favorite: false,
+    // },
     {
       id: 6,
       url: "https://live.staticflickr.com/65535/52694185128_9207b10aa5_h.jpg",
