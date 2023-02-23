@@ -1,6 +1,6 @@
 .image {
-  width: 20vh;
-  height: 20vh;
+  width: 8vh;
+  height: 8vh;
   animation: rotation 50s infinite linear;
 }
 
@@ -16,9 +16,8 @@
 .container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
   align-items: center;
-  gap: 3vh;
+  gap: 1vh;
 }
 
 /* CSS */
@@ -97,6 +96,7 @@
 }
 
 .text {
-  font-size: 30px;
+  font-size: 25px;
   color: white;
+  margin: 0;
 }

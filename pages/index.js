@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <>
       <MainBanner />
-      {/* <Food /> */}
+      <Food />
     </>
   );
 }

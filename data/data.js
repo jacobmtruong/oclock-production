@@ -30,24 +30,24 @@ const photography = {
       content: "Food Photography",
       favorite: true,
     },
+    // {
+    //   id: 6,
+    //   url: "https://live.staticflickr.com/65535/52694008824_166d7653bd_h.jpg",
+    //   content: "Food Photography",
+    //   favorite: false,
+    // },
     {
-      id: 6,
-      url: "https://live.staticflickr.com/65535/52694008824_166d7653bd_h.jpg",
+      id: 7,
+      url: "https://live.staticflickr.com/65535/52694119243_e3216085cf_b.jpg",
       content: "Food Photography",
       favorite: false,
     },
-    // {
-    //   id: 7,
-    //   url: "https://live.staticflickr.com/65535/52694119243_e3216085cf_b.jpg",
-    //   content: "Food Photography",
-    //   favorite: false,
-    // },
-    // {
-    //   id: 8,
-    //   url: "https://live.staticflickr.com/65535/52694041290_10ee535607_b.jpg",
-    //   content: "Food Photography",
-    //   favorite: false,
-    // },
+    {
+      id: 8,
+      url: "https://live.staticflickr.com/65535/52694041290_10ee535607_b.jpg",
+      content: "Food Photography",
+      favorite: false,
+    },
     {
       id: 9,
       url: "https://live.staticflickr.com/65535/52694043635_95691a8b85_b.jpg",
