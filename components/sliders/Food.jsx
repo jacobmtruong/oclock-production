@@ -21,7 +21,7 @@ export const Food = () => {
       {" "}
       <Carousel className={classes.carousel} fade>
         {data?.map((picture) => (
-          <Carousel.Item>
+          <Carousel.Item className={classes.carouselitem}>
             <img
               className="d-block w-100"
               src={picture.url}

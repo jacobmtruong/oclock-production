@@ -3,6 +3,7 @@ import Link from "next/link";
 import OclockIcon from "../main/OclockIcon";
 import Image from "next/image";
 import igicon from "../../styles/images/ig-icon.png";
+
 export const MainBanner = () => {
   return (
     <div className={classes.maincontainer}>
@@ -34,7 +35,7 @@ export const MainBanner = () => {
             <Link href="">Contact</Link>
           </li>
           <li>
-            <Link href="">
+            <Link href="" className={classes.instagram}>
               <Image src={igicon} className={classes.image} />
             </Link>
           </li>
