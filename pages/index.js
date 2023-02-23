@@ -2,6 +2,7 @@ import Head from "next/head";
 import { MainBanner } from "../components/main/MainBanner";
 import "@nextcss/reset";
 import { LandscapeCarousel } from "../components/sliders/LandscapeCarousel.jsx";
+import TextBanner from "../components/main/TextBanner";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       </Head>
       <MainBanner />
       <LandscapeCarousel />
+      <TextBanner />
     </>
   );
 }
