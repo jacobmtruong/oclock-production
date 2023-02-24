@@ -1,9 +1,31 @@
-.title {
+.container {
+  padding: 15vh 0vh;
   background-color: rgb(22, 21, 19);
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+}
+
+.title {
   color: white;
   font-size: 50px;
   font-weight: 900;
   text-align: center;
+}
+
+.cardcontainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 50px;
+  width: 80%;
+  justify-content: space-around;
+  justify-content: center;
+}
+
+.card {
+  object-fit: cover;
   height: 50vh;
-  padding: 15vh 0vh;
+  width: 350px;
 }

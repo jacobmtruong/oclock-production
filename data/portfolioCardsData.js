@@ -1,33 +1,28 @@
 const cards = [
   {
     id: 1,
-    url: "https://live.staticflickr.com/65535/52694092260_20029bc6bd_k.jpg",
-    content: "Product Photography",
+    url: "https://live.staticflickr.com/65535/52694041290_18fc98f170_h.jpg",
+    content: "Food",
   },
   {
     id: 2,
-    url: "https://live.staticflickr.com/65535/52694008824_5c7b6697dd_k.jpg",
-    content: "Architecture Photography",
+    url: "https://live.staticflickr.com/65535/52694047990_1fa6b74637_h.jpg",
+    content: "Beverage",
   },
   {
     id: 3,
-    url: "https://live.staticflickr.com/65535/52694254118_5e76ffea97_k.jpg",
-    content: "Lifestyle Photography",
+    url: "https://live.staticflickr.com/65535/52694185128_9207b10aa5_h.jpg",
+    content: "Product",
   },
   {
     id: 4,
-    url: "https://live.staticflickr.com/65535/52694172213_0475c82139_k.jpg",
-    content: "Product Photography",
+    url: "https://live.staticflickr.com/65535/52693742556_4c84330a0c_h.jpg",
+    content: "Architecture",
   },
   {
     id: 5,
-    url: "https://live.staticflickr.com/65535/52693560371_fea8584439_k.jpg",
-    content: "Food Photography",
-  },
-  {
-    id: 6,
-    url: "https://live.staticflickr.com/65535/52694166555_8a367687bd_k.jpg",
-    content: "Architecture Photography",
+    url: "https://live.staticflickr.com/65535/52693767266_60e0e1acea_h.jpg",
+    content: "Lifestyle",
   },
 ];
 
