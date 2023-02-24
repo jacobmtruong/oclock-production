@@ -1,6 +1,6 @@
 .bigcontainer {
   width: 100%;
-  padding: 3vh 20vh;
+  padding: 0vh 20vh;
 }
 
 .container {
@@ -69,7 +69,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 7vh;
+  height: 6vh;
   gap: 3vh;
   border-bottom: 2px solid black;
 }
