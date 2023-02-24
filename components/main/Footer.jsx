@@ -7,18 +7,30 @@ import fbicon from "../../styles/images/fbiconblack.jpg";
 
 const Footer = () => {
   return (
-    <div className={classes.container}>
-      <div className={classes.leftnest}>
-        <Image src={brand} alt="brand-icon" />
-        <p className={classes.footerlegal}>© 2023 O'CLOCK PRODUCTION</p>
-      </div>
-      <div className={classes.rightnest}>
-        <Link href="">
-          <Image src={igicon} alt="ig-icon" />
-        </Link>
-        <Link href="">
-          <Image src={fbicon} alt="ig-icon" />
-        </Link>
+    <div className={classes.bigcontainer}>
+      <ul className={classes.navbar}>
+        <li>
+          <Link href="">Home</Link>
+        </li>
+        <li>
+          <Link href="">About</Link>
+        </li>
+        <li>
+          <Link href="">Portfolio</Link>
+        </li>
+      </ul>
+      <div className={classes.container}>
+        <div className={classes.leftnest}>
+          <p className={classes.footerlegal}>© 2023 O'CLOCK PRODUCTION</p>
+        </div>
+        <div className={classes.rightnest}>
+          <Link href="">
+            <Image src={igicon} alt="ig-icon" />
+          </Link>
+          <Link href="">
+            <Image src={fbicon} alt="ig-icon" />
+          </Link>
+        </div>
       </div>
     </div>
   );

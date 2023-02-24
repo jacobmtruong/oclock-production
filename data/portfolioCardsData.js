@@ -6,7 +6,7 @@ const cards = [
   },
   {
     id: 4,
-    url: "https://live.staticflickr.com/65535/52693767266_60e0e1acea_h.jpg",
+    url: "https://live.staticflickr.com/65535/52694171200_3b061abab8_h.jpg",
     content: "Lifestyle",
   },
   {
@@ -18,7 +18,7 @@ const cards = [
   {
     id: 2,
     url: "https://live.staticflickr.com/65535/52694041290_18fc98f170_h.jpg",
-    content: "Food & Beverage",
+    content: "F & B",
   },
 ];
 

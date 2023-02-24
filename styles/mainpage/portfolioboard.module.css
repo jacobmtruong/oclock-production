@@ -29,22 +29,23 @@
   height: 40vh;
   width: 450px;
   border-radius: 6px;
+  filter: opacity(0.7);
+  transition: 0.2s linear;
 }
 
 .cardcover {
   position: relative;
-  transition: 0.2s linear;
 }
 
-.cardcover:hover {
-  filter: opacity(0.5);
+.card:hover {
+  filter: none;
 }
 
 .content {
-  color: rgb(72, 70, 70);
+  color: white;
   margin: 0 auto;
   font-size: 40px;
-  font-weight: 600;
+  font-weight: bolder;
   position: absolute;
   top: 50%;
   left: 50%;
