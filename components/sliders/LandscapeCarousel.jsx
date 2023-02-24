@@ -22,7 +22,7 @@ export const LandscapeCarousel = () => {
 
   return (
     <div className={classes.container}>
-      <Carousel className={classes.carousel}>
+      <Carousel className={classes.carousel} fade>
         {data?.map((picture, i) => (
           <Carousel.Item className={classes.carouselitem} key={i}>
             <Carousel.Caption className={classes.caption}>

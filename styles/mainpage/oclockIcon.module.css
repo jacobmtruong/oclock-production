@@ -1,6 +1,6 @@
 .image {
-  width: 10vh;
-  height: 10vh;
+  width: 8vh;
+  height: 8vh;
   align-self: center;
   animation: rotation 50s infinite linear;
 }
