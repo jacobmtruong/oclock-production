@@ -10,7 +10,7 @@
 
 .title {
   color: white;
-  font-size: 50px;
+  font-size: 60px;
   font-weight: 900;
   text-align: center;
 }
@@ -18,10 +18,14 @@
 .cardcontainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 50px;
+  gap: 60px;
   width: 80%;
   justify-content: space-around;
   justify-content: center;
+}
+
+.card:hover {
+  filter: none;
 }
 
 .card {
@@ -29,6 +33,7 @@
   height: 40vh;
   width: 450px;
   filter: opacity(0.7);
+  transition: 0.2s linear;
 }
 
 .content {

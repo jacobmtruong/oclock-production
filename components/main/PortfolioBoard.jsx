@@ -1,4 +1,5 @@
 import classes from "../../styles/mainpage/portfolioboard.module.css";
+import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const Portfolio = () => {
@@ -21,8 +22,10 @@ const Portfolio = () => {
       <div className={classes.cardcontainer}>
         {data?.map((card, i) => (
           <div key={i} style={{ position: "relative" }}>
-            <img src={card.url} className={classes.card} />
-            <p className={classes.content}>{card.content}</p>
+            <Link href="">
+              <img src={card.url} className={classes.card} />
+              <p className={classes.content}>{card.content}</p>
+            </Link>
           </div>
         ))}
       </div>
