@@ -37,7 +37,7 @@
 }
 
 .cardcover:hover {
-  filter: opacity(0.6);
+  filter: opacity(0.5);
 }
 
 .content {

@@ -1,11 +1,11 @@
 const cards = [
   {
-    id: 4,
+    id: 1,
     url: "https://live.staticflickr.com/65535/52693742556_4c84330a0c_h.jpg",
     content: "Architecture",
   },
   {
-    id: 1,
+    id: 2,
     url: "https://live.staticflickr.com/65535/52694041290_18fc98f170_h.jpg",
     content: "Food",
   },
@@ -15,12 +15,12 @@ const cards = [
     content: "Product",
   },
   {
-    id: 5,
+    id: 4,
     url: "https://live.staticflickr.com/65535/52693767266_60e0e1acea_h.jpg",
     content: "Lifestyle",
   },
   {
-    id: 2,
+    id: 5,
     url: "https://live.staticflickr.com/65535/52694048690_6cc8f3b4e3_h.jpg",
     content: "Beverage",
   },
