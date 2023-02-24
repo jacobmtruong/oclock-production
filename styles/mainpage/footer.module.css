@@ -66,14 +66,15 @@
 }
 
 .navbar {
-  width: fit-content;
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  padding-bottom: 20px;
   gap: 3vh;
+  border-bottom: 2px solid black;
 }
 
 .navbar li > a {
-  font-size: 30px;
+  font-size: 25px;
   text-decoration: none;
   color: black;
   font-weight: 600;
