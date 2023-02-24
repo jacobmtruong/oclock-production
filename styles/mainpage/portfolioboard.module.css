@@ -24,16 +24,20 @@
   justify-content: center;
 }
 
-.card:hover {
-  filter: none;
-}
-
 .card {
   object-fit: cover;
   height: 40vh;
   width: 450px;
-  filter: opacity(0.7);
+}
+
+.cardcover {
+  position: relative;
+  filter: opacity(0.6);
   transition: 0.2s linear;
+}
+
+.cardcover:hover {
+  filter: none;
 }
 
 .content {
@@ -45,5 +49,4 @@
   top: 50%;
   left: 50%;
   transform: translateY(-50%) translateX(-50%);
-  z-index: 7;
 }

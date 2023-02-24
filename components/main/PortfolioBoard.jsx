@@ -21,12 +21,12 @@ const Portfolio = () => {
       <p className={classes.title}>Portfolio | Works</p>
       <div className={classes.cardcontainer}>
         {data?.map((card, i) => (
-          <div key={i} style={{ position: "relative" }}>
-            <Link href="">
+          <Link href="" key={i}>
+            <div className={classes.cardcover}>
               <img src={card.url} className={classes.card} />
               <p className={classes.content}>{card.content}</p>
-            </Link>
-          </div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
