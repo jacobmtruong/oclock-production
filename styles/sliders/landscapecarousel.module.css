@@ -57,6 +57,7 @@
 .content a {
   width: fit-content;
   font-weight: 800;
+  text-transform: uppercase;
   text-decoration: none;
   background-color: white;
   color: black;

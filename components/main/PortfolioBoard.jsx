@@ -29,6 +29,7 @@ const Portfolio = () => {
           </Link>
         ))}
       </div>
+      <Link href="">Get in touch</Link>
     </div>
   );
 };
