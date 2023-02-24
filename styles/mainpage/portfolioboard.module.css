@@ -54,12 +54,13 @@
 .container > a {
   width: fit-content;
   font-weight: 900;
+  font-size: 25px;
   text-decoration: none;
   text-transform: uppercase;
   background-color: white;
   color: black;
   border: 2px solid white;
-  padding: 12px 32px;
+  padding: 12px 46px;
   border-radius: 12px;
   transition: 0.2s linear;
 }
