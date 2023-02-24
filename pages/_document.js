@@ -3,7 +3,7 @@ import loader from "../src/loader";
 
 export default function Document() {
   return (
-    <Html>
+    <Html className="scroll-smooth">
       <Head>
         <link
           href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&family=Raleway:wght@200;400&display=swap"
