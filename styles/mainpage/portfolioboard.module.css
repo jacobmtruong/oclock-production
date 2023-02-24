@@ -26,6 +26,19 @@
 
 .card {
   object-fit: cover;
-  height: 50vh;
-  width: 350px;
+  height: 40vh;
+  width: 450px;
+  filter: opacity(0.7);
+}
+
+.content {
+  color: white;
+  margin: 0 auto;
+  font-size: 40px;
+  font-weight: 600;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+  z-index: 7;
 }

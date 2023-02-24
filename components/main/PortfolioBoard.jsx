@@ -20,9 +20,9 @@ const Portfolio = () => {
       <p className={classes.title}>Portfolio | Works</p>
       <div className={classes.cardcontainer}>
         {data?.map((card, i) => (
-          <div key={i}>
+          <div key={i} style={{ position: "relative" }}>
             <img src={card.url} className={classes.card} />
-            <p>{card.content}</p>
+            <p className={classes.content}>{card.content}</p>
           </div>
         ))}
       </div>
