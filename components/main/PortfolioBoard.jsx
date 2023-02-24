@@ -13,6 +13,9 @@ const Portfolio = () => {
       .then((data) => {
         setData(data);
         setLoading(false);
+      })
+      .catch((rejected) => {
+        console.log(rejected);
       });
   }, [data]);
 

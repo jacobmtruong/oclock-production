@@ -14,14 +14,17 @@ export const LandscapeCarousel = () => {
       .then((data) => {
         setData(data);
         setLoading(false);
+      })
+      .catch((rejected) => {
+        console.log(rejected);
       });
   }, [data]);
 
   return (
     <div className={classes.container}>
       <Carousel className={classes.carousel}>
-        {data?.map((picture) => (
-          <Carousel.Item className={classes.carouselitem}>
+        {data?.map((picture, i) => (
+          <Carousel.Item className={classes.carouselitem} key={i}>
             <Carousel.Caption className={classes.caption}>
               <h3>{picture.content}</h3>
             </Carousel.Caption>

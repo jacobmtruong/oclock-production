@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <div className={classes.container}>
       <div className={classes.leftnest}>
-        <Image src={brand} />
+        <Image src={brand} alt="brand-icon" />
         <p className={classes.footerlegal}>© 2023 O'CLOCK PRODUCTION</p>
       </div>
       <div className={classes.rightnest}>
