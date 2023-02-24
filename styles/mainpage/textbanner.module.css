@@ -2,11 +2,13 @@
   margin: auto;
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 3vh;
-  height: 40vh;
+  height: fit-content;
   margin: auto;
+  padding: 15vh 0vh;
 }
 
 .container > p {

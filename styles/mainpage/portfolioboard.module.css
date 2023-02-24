@@ -1,5 +1,5 @@
 .container {
-  padding: 15vh 0vh;
+  padding: 10vh 0vh;
   background-color: rgb(22, 21, 19);
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@
 .cardcontainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 60px;
+  gap: 70px;
   width: 80%;
   justify-content: space-around;
   justify-content: center;
@@ -33,12 +33,11 @@
 
 .cardcover {
   position: relative;
-  filter: opacity(0.6);
   transition: 0.2s linear;
 }
 
 .cardcover:hover {
-  filter: none;
+  filter: opacity(0.6);
 }
 
 .content {
