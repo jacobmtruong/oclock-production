@@ -28,6 +28,7 @@
   object-fit: cover;
   height: 40vh;
   width: 450px;
+  border-radius: 6px;
 }
 
 .cardcover {
