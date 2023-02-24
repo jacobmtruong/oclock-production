@@ -14,15 +14,11 @@ const cards = [
     url: "https://live.staticflickr.com/65535/52694167823_2a81c9d614_h.jpg",
     content: "Product",
   },
-  {
-    id: 5,
-    url: "https://live.staticflickr.com/65535/52694048690_6cc8f3b4e3_h.jpg",
-    content: "Beverage",
-  },
+
   {
     id: 2,
     url: "https://live.staticflickr.com/65535/52694041290_18fc98f170_h.jpg",
-    content: "Food",
+    content: "Food & Beverage",
   },
 ];
 
