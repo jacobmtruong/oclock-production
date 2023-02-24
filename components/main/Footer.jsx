@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import brand from "../../styles/images/iconblack.png";
 import igicon from "../../styles/images/igiconblack.png";
+import fbicon from "../../styles/images/fbiconblack.jpg";
 
 const Footer = () => {
   return (
@@ -14,6 +15,9 @@ const Footer = () => {
       <div className={classes.rightnest}>
         <Link href="">
           <Image src={igicon} alt="ig-icon" />
+        </Link>
+        <Link href="">
+          <Image src={fbicon} alt="ig-icon" />
         </Link>
       </div>
     </div>
