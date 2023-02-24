@@ -44,7 +44,7 @@
 }
 
 .rightcontainer > a:hover {
-  background-color: white;
+  background-color: rgb(220, 220, 220);
   color: black;
-  border: 2px solid rgb(232, 230, 230);
+  border: 2px solid rgb(0, 0, 0);
 }
