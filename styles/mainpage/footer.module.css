@@ -1,14 +1,12 @@
 .container {
   width: 100%;
-  height: 60px;
-  margin: auto;
+  height: 6vh;
   background-color: white;
   display: flex;
   flex-wrap: wrap;
-  flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0vh 25vh;
+  padding: 0vh 20vh;
 }
 
 .leftnest {
