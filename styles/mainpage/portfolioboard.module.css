@@ -83,4 +83,8 @@
   .container > a {
     font-size: 18px;
   }
+
+  .card {
+    height: 39vh;
+  }
 }
