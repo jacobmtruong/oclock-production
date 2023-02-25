@@ -101,6 +101,6 @@
   }
   .content p:not(.title) {
     text-align: justify;
-    width: 25vh;
+    width: 30vh;
   }
 }
