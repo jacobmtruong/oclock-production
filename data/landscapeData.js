@@ -11,7 +11,7 @@ const landscapedata = [
   },
   {
     id: 3,
-    url: "https://live.staticflickr.com/65535/52694254118_5e76ffea97_k.jpg",
+    url: "https://live.staticflickr.com/65535/52694171200_3b061abab8_h.jpg",
     content: "Lifestyle Photography",
   },
   {

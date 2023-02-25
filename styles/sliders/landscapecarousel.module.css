@@ -24,6 +24,8 @@
 .caption > h3 {
   font-size: 30px;
   font-weight: 800;
+  text-transform: uppercase;
+  display: none;
 }
 
 .container > p {
@@ -47,6 +49,7 @@
   font-size: 55px;
   font-weight: 800;
   width: 30vh;
+  text-transform: uppercase;
 }
 
 .content p:not(.title) {
@@ -91,9 +94,12 @@
     font-weight: 900;
   }
   .title {
-    font-size: 43px;
+    font-size: 35px;
   }
   .content {
     width: 80%;
+  }
+  .content > p:not(.title) {
+    text-align: left;
   }
 }

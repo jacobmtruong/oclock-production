@@ -6,12 +6,12 @@ const cards = [
   },
   {
     id: 2,
-    url: "https://live.staticflickr.com/65535/52694041290_18fc98f170_h.jpg",
+    url: "https://live.staticflickr.com/65535/52710003433_322a483c81_h.jpg",
     content: "F & B",
   },
   {
     id: 4,
-    url: "https://live.staticflickr.com/65535/52694171200_3b061abab8_h.jpg",
+    url: "https://live.staticflickr.com/65535/52694170875_9bb158a794_h.jpg",
     content: "Lifestyle",
   },
   {

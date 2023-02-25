@@ -21,7 +21,17 @@ const Portfolio = () => {
 
   return (
     <div className={classes.container}>
-      <p className={classes.title}>Portfolio | Works</p>
+      <p className={classes.title}>
+        <span
+          style={{
+            textTransform: "uppercase",
+            fontWeight: "900",
+            letterSpacing: "5px",
+          }}
+        >
+          Portfolio
+        </span>{" "}
+      </p>
       <div className={classes.cardcontainer}>
         {data?.map((card, i) => (
           <Link href="" key={i}>
