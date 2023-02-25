@@ -76,7 +76,7 @@
 
 @media (max-width: 480px) {
   .container {
-    gap: 4vh;
+    gap: 5vh;
     background-color: black;
   }
   .carousel {
@@ -94,6 +94,6 @@
   }
 
   .title {
-    font-size: 50px;
+    font-size: 43px;
   }
 }
