@@ -99,7 +99,8 @@
   .content {
     width: 80%;
   }
-  .content > p:not(.title) {
-    text-align: left;
+  .content p:not(.title) {
+    text-align: justify;
+    width: 25vh;
   }
 }
