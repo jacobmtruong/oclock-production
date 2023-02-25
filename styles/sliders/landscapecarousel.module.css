@@ -82,17 +82,14 @@
   .carousel {
     height: 50vh;
   }
-
   .carouselitem > img {
     height: 50vh;
     object-fit: cover;
   }
-
   .caption > h3 {
     font-size: 20px;
     font-weight: 900;
   }
-
   .title {
     font-size: 43px;
   }
