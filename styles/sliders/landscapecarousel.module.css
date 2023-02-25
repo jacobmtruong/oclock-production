@@ -93,4 +93,7 @@
   .title {
     font-size: 43px;
   }
+  .content {
+    width: 80%;
+  }
 }
