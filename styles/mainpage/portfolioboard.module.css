@@ -71,3 +71,16 @@
   color: white;
   border: 2px solid black;
 }
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 45px;
+  }
+  .content {
+    font-size: 30px;
+  }
+
+  .container > a {
+    font-size: 18px;
+  }
+}
