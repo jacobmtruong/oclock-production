@@ -100,3 +100,19 @@
   visibility: visible;
   width: 100%;
 }
+
+@media (max-width: 480px) {
+  .bigcontainer {
+    padding: 0 20px;
+  }
+  .navbar {
+    display: none;
+  }
+  .container {
+    height: 8vh;
+    width: 100%;
+  }
+  .leftnest > p {
+    font-size: 12px;
+  }
+}
