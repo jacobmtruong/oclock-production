@@ -109,10 +109,15 @@
     display: none;
   }
   .container {
-    height: 8vh;
+    height: 10vh;
     width: 100%;
+    align-self: center;
   }
   .leftnest > p {
     font-size: 12px;
+  }
+  .rightnest > a > img {
+    height: 35px;
+    width: 35px;
   }
 }
