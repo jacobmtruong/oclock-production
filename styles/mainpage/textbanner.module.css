@@ -53,6 +53,14 @@
 }
 
 @media (max-width: 480px) {
+  .container {
+    gap: 6vh;
+  }
   .container > p {
+    width: 80%;
+    font-size: 40px;
+  }
+  .rightcontainer {
+    width: 80%;
   }
 }
