@@ -77,10 +77,11 @@ audio,
 video {
   margin: 0;
   padding: 0;
-  border: 1px solid RED;
+  /* border: 1px solid RED; */
   border: 0;
   outline: 0;
   font-size: 100%;
   vertical-align: baseline;
   background: transparent;
+  overflow-x: hidden;
 }

@@ -19,18 +19,7 @@ export const MainBanner = () => {
           <li>
             <Link href="">Portfolio</Link>
           </li>
-          <li>
-            <p
-              style={{
-                color: "white",
-                fontSize: "20px",
-                padding: "0",
-                margin: "0",
-              }}
-            >
-              |
-            </p>
-          </li>
+
           <li>
             <Link href="">Contact</Link>
           </li>

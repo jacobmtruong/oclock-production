@@ -76,3 +76,17 @@
   height: 100%;
   width: 30px;
 }
+
+@media (max-width: 480px) {
+  .navcontainer {
+    flex-direction: column;
+    gap: 100px;
+  }
+  .navbar {
+    flex-direction: column;
+  }
+
+  .banner {
+    height: 50vh;
+  }
+}

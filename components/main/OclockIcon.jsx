@@ -6,10 +6,6 @@ import Image from "next/image";
 const OclockIcon = () => {
   return (
     <div className={classes.container}>
-      {/* <Link href="" className={classes.button}>
-        Book an Appointment
-      </Link> */}
-
       <p className={classes.text}>PR</p>
       <Image src={icon} className={classes.image} alt="brand-icon" />
       <p className={classes.text}>DUCTION</p>
