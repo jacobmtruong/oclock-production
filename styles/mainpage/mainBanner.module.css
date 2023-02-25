@@ -81,6 +81,7 @@
   .navcontainer {
     flex-direction: column;
     gap: 100px;
+    padding-top: 5vh;
   }
   .navbar {
     flex-direction: column;
