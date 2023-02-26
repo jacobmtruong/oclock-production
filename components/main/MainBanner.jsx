@@ -25,7 +25,12 @@ export const MainBanner = () => {
           </li>
           <li>
             <Link href="" className={classes.instagram}>
-              <Image src={igicon} className={classes.image} alt="igicon" />
+              <Image
+                src={igicon}
+                className={classes.image}
+                alt="igicon"
+                priority
+              />
             </Link>
           </li>
         </ul>
