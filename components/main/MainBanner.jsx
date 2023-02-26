@@ -8,11 +8,13 @@ export const MainBanner = () => {
   return (
     <div className={classes.maincontainer}>
       <div className={classes.navcontainer}>
-        <OclockIcon />
+        <Link href="">
+          <OclockIcon />
+        </Link>
         <ul className={classes.navbar}>
-          <li>
+          {/* <li>
             <Link href="">Home</Link>
-          </li>
+          </li> */}
           <li>
             <Link href="">About</Link>
           </li>

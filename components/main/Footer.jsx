@@ -9,9 +9,9 @@ const Footer = () => {
   return (
     <div className={classes.bigcontainer}>
       <ul className={classes.navbar}>
-        <li>
+        {/* <li>
           <Link href="">Home</Link>
-        </li>
+        </li> */}
         <li>
           <Link href="">About</Link>
         </li>
