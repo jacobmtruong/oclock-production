@@ -35,7 +35,7 @@ const Portfolio = () => {
       </p>
       <div className={classes.cardcontainer}>
         {data?.map((card, i) => (
-          <Fade right>
+          <Fade bottom>
             <Link href="" key={i}>
               <div className={classes.cardcover}>
                 <img src={card.url} className={classes.card} />
