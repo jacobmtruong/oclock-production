@@ -102,6 +102,11 @@
   }
   .content p:not(.title) {
     text-align: justify;
-    width: 30vh;
+    width: 40vh;
+    align-self: flex-end;
+  }
+
+  .content > a {
+    align-self: flex-end;
   }
 }
