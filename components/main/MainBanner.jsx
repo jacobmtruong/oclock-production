@@ -16,10 +16,10 @@ export const MainBanner = () => {
             <Link href="">Home</Link>
           </li> */}
           <li>
-            <Link href="">About</Link>
+            <Link href="">Portfolio</Link>
           </li>
           <li>
-            <Link href="">Portfolio</Link>
+            <Link href="">About</Link>
           </li>
 
           <li>
