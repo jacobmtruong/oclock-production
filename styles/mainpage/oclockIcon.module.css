@@ -33,6 +33,7 @@
   margin: 0;
   font-weight: 900;
   letter-spacing: 3px;
+  text-decoration: none;
 }
 
 @media (max-width: 480px) {

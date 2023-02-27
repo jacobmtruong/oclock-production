@@ -3,13 +3,12 @@ import Link from "next/link";
 import OclockIcon from "../main/OclockIcon";
 import Image from "next/image";
 import igicon from "../../styles/images/ig-icon.png";
-import ImageBannerMain from "../main/ImageBannerMain";
 
 export const MainBanner = () => {
   return (
     <div className={classes.maincontainer}>
       <div className={classes.navcontainer}>
-        <Link href="">
+        <Link href="/">
           <OclockIcon />
         </Link>
         <ul className={classes.navbar}>
@@ -17,7 +16,7 @@ export const MainBanner = () => {
             <Link href="">Home</Link>
           </li> */}
           <li>
-            <Link href="">Portfolio</Link>
+            <Link href="/portfolio">Portfolio</Link>
           </li>
           <li>
             <Link href="">About</Link>
@@ -38,8 +37,6 @@ export const MainBanner = () => {
           </li>
         </ul>
       </div>
-
-      <ImageBannerMain />
     </div>
   );
 };

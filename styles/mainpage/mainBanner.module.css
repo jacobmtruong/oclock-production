@@ -77,6 +77,10 @@
   width: 30px;
 }
 
+.navcontainer > a:not(.navbar) {
+  text-decoration: none;
+}
+
 @media (max-width: 480px) {
   .navcontainer {
     flex-direction: column;
