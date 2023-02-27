@@ -73,6 +73,13 @@
 }
 
 @media (max-width: 480px) {
+  .container {
+    padding: 10vh 0vh;
+  }
+
+  .cardcontainer {
+    gap: 3vh;
+  }
   .title {
     font-size: 30px;
   }

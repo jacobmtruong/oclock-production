@@ -55,6 +55,7 @@
 @media (max-width: 480px) {
   .container {
     gap: 6vh;
+    padding: 10vh 0vh;
   }
   .container > p {
     width: 80%;
