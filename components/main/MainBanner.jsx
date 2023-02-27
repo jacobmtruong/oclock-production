@@ -3,6 +3,7 @@ import Link from "next/link";
 import OclockIcon from "../main/OclockIcon";
 import Image from "next/image";
 import igicon from "../../styles/images/ig-icon.png";
+import ImageBannerMain from "../main/ImageBannerMain";
 
 export const MainBanner = () => {
   return (
@@ -38,7 +39,7 @@ export const MainBanner = () => {
         </ul>
       </div>
 
-      <div className={classes.banner}></div>
+      <ImageBannerMain />
     </div>
   );
 };
