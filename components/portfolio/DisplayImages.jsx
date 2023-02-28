@@ -1,23 +1,29 @@
-import { shuffleImages } from "../../data/images";
-import Image from "next/image";
+import { getAllImage } from "../../data/images";
 import Fade from "react-reveal/Fade";
 import classes from "../../styles/portfoliostyles/displayimages.module.css";
+import React, { useState } from "react";
+import ModalImage from "react-modal-image";
+
+import Link from "next/link";
 
 const DisplayImages = () => {
-  const data = shuffleImages();
+  const data = getAllImage();
+  const [show, setShow] = useState(false);
+
   return (
-    <div className={classes.container}>
-      <Fade bottom>
-        {data.map((image) => (
-          <Image
-            src={image.url}
-            height={500}
-            width={500}
+    <Fade>
+      <div className={classes.container}>
+        {data.map((image, i) => (
+          <ModalImage
+            small={image.url}
+            large={image.url}
             className={classes.card}
+            alt={image.content}
+            hideDownload="true"
           />
         ))}
-      </Fade>
-    </div>
+      </div>
+    </Fade>
   );
 };
 

@@ -122,8 +122,16 @@ const images = [
   },
 ];
 
+export function getAllImage() {
+  return images;
+}
+
 export function shuffleImages() {
   return images.sort(() => Math.random() - 0.5);
+}
+
+export function getImageById(id) {
+  return images.find((image) => image.id === id);
 }
 
 export default images;
