@@ -27,8 +27,8 @@
 
 @media (max-width: 820px) {
   .card {
-    width: 45vh;
-    height: 45vh;
+    width: 40vh;
+    height: 40vh;
   }
   .container {
     padding: 10vh 5vh;
