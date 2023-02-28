@@ -35,3 +35,12 @@
     font-weight: 600;
   }
 }
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5vh 0vh;
+  }
+  .title {
+    font-size: 40px;
+  }
+}

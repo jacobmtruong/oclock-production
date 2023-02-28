@@ -24,3 +24,13 @@
     padding: 10vh 0vh;
   }
 }
+
+@media (max-width: 768px) {
+  .card {
+    width: 45vh;
+    height: 45vh;
+  }
+  .container {
+    padding: 10vh 5vh;
+  }
+}
