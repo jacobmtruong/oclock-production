@@ -4,11 +4,8 @@ import classes from "../../styles/portfoliostyles/displayimages.module.css";
 import React, { useState } from "react";
 import ModalImage from "react-modal-image";
 
-import Link from "next/link";
-
 const DisplayImages = () => {
   const data = getAllImage();
-  const [show, setShow] = useState(false);
 
   return (
     <Fade>
