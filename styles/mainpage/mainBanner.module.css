@@ -26,6 +26,15 @@
   transition: 0.3s ease-in-out;
   position: relative;
 }
+/* Specific styles for non-active links */
+.nonActive {
+  color: white;
+}
+
+/* Specific styles for active links */
+.active {
+  border-bottom: 2px solid white;
+}
 
 .navbar a:not(.instagram)::before {
   content: "";
