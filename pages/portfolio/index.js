@@ -1,4 +1,5 @@
 import { MainBanner } from "../../components/main/MainBanner";
+import DisplayImages from "../../components/portfolio/DisplayImages";
 import ImageBannerPortfolio from "../../components/portfolio/ImageBannerPortfolio";
 
 export default function Portfolio() {
@@ -6,6 +7,7 @@ export default function Portfolio() {
     <div>
       <MainBanner />
       <ImageBannerPortfolio />
+      <DisplayImages />
     </div>
   );
 }

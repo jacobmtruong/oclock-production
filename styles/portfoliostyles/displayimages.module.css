@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5vh;
+  justify-content: center;
+  align-items: center;
+  padding: 3vh 10vh;
+  background-color: black;
+}
+
+.card {
+  width: 45vh;
+  height: 40vh;
+  object-fit: cover;
+}
