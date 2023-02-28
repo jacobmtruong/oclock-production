@@ -44,6 +44,10 @@
   width: 100%;
 }
 
+.navbar > a.instagram {
+  align-self: center;
+}
+
 .navbar > li {
   list-style: none;
   display: flex;
