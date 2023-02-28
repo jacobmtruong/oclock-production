@@ -25,3 +25,13 @@
   transform: translateY(-50%) translateX(-50%);
   font-weight: 300;
 }
+
+@media (max-width: 480px) {
+  .container {
+    padding: 5vh 0vh;
+  }
+  .title {
+    font-size: 40px;
+    font-weight: 600;
+  }
+}

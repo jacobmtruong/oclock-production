@@ -14,3 +14,13 @@
   object-fit: cover;
   object-position: 50% 65%;
 }
+
+@media (max-width: 480px) {
+  .card {
+    width: 52vh;
+    height: 52vh;
+  }
+  .container {
+    padding: 10vh 0vh;
+  }
+}
