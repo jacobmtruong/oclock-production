@@ -63,8 +63,7 @@
   font-weight: 800;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: white;
-  color: black;
+  color: white;
   border: 2px solid white;
   padding: 12px 18px;
   border-radius: 12px;
@@ -72,8 +71,8 @@
 }
 
 .content a:hover {
-  background-color: black;
-  color: white;
+  background-color: rgb(199, 196, 196);
+  color: black;
   border: 2px solid black;
 }
 
