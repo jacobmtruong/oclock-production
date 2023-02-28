@@ -31,11 +31,25 @@ export const MainBanner = () => {
             </Link>
           </li>
           <li>
-            <Link href="">About</Link>
+            <Link
+              href="/about"
+              className={
+                currentRoute === "/about" ? classes.active : classes.nonActive
+              }
+            >
+              About
+            </Link>
           </li>
 
           <li>
-            <Link href="">Contact</Link>
+            <Link
+              href="/contact"
+              className={
+                currentRoute === "/contact" ? classes.active : classes.nonActive
+              }
+            >
+              Contact
+            </Link>
           </li>
           <Link href="" className={classes.instagram}>
             <Image src={igicon} className={classes.image} alt="igicon" />
