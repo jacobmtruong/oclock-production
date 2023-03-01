@@ -1,14 +1,37 @@
 import { getAllImage } from "../../data/images";
-import Fade from "react-reveal/Fade";
 import classes from "../../styles/portfoliostyles/displayimages.module.css";
 import ModalImage from "react-modal-image";
+import { useState } from "react";
 
 const DisplayImages = () => {
   const data = getAllImage();
+  const [images, setImages] = useState(data);
+
+  const getFood = () => {
+    const food = data.filter((image) => image.category === "food");
+    setImages(food);
+  };
+
+  const getBeverage = () => {
+    const beverage = data.filter((image) => image.category === "beverage");
+    setImages(beverage);
+  };
+
+  const getArchitecture = () => {
+    const architecture = data.filter(
+      (image) => image.category === "architecture"
+    );
+    setImages(architecture);
+  };
+
+  const getLifestyle = () => {
+    const lifestyle = data.filter((image) => image.category === "lifestyle");
+    setImages(lifestyle);
+  };
 
   return (
     <div className={classes.container}>
-      {data.map((image, i) => (
+      {images.map((image, i) => (
         <ModalImage
           small={image.url}
           large={image.url}
