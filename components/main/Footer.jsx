@@ -4,21 +4,26 @@ import Image from "next/image";
 import brand from "../../styles/images/iconblack.png";
 import igicon from "../../styles/images/igiconblack.png";
 import fbicon from "../../styles/images/fbiconblack.jpg";
+import pin from "../../styles/images/pin.png";
 
 const Footer = () => {
   return (
     <div className={classes.bigcontainer}>
-      <ul className={classes.navbar}>
-        {/* <li>
-          <Link href="">Home</Link>
-        </li> */}
-        <li>
-          <Link href="">About</Link>
-        </li>
-        <li>
-          <Link href="">Portfolio</Link>
-        </li>
-      </ul>
+      <div className={classes.navbar}>
+        <ul>
+          <li>
+            <Link href="">About</Link>
+          </li>
+          <li>
+            <Link href="">Portfolio</Link>
+          </li>
+        </ul>
+
+        <p>
+          <Image src={pin} alt="pin-location" />
+          Saigon, Vietnam
+        </p>
+      </div>
       <div className={classes.container}>
         <div className={classes.leftnest}>
           <p className={classes.footerlegal}>© 2023 O'CLOCK PRODUCTION</p>

@@ -36,7 +36,7 @@
   border-bottom: 2px solid white;
 }
 
-.navbar a:not(.instagram)::before {
+.navbar a:not(.instagram)::after {
   content: "";
   position: absolute;
   width: 0;
@@ -45,12 +45,14 @@
   left: 0;
   background-color: #fff;
   visibility: hidden;
-  transition: all 0.3s ease-in-out;
+  transition: 0.2s ease;
+  -webkit-transition: 0.2s ease;
 }
 
-.navbar a:hover:not(.instagram)::before {
+.navbar a:hover:not(.instagram)::after {
   visibility: visible;
   width: 100%;
+  left: 0;
 }
 
 .navbar > a.instagram {

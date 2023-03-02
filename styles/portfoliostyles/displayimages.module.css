@@ -4,13 +4,13 @@
   gap: 5vh;
   justify-content: center;
   align-items: center;
-  padding: 10vh;
+  padding: 10vh 20vh;
   background-color: black;
 }
 
 .card {
-  width: 45vh;
-  height: 40vh;
+  /* width: 25vh; */
+  height: 35vh;
   object-fit: cover;
   object-position: 50% 65%;
 }
@@ -27,8 +27,8 @@
 
 @media (max-width: 820px) {
   .card {
-    width: 30vh;
-    height: 30vh;
+    width: 50vh;
+    height: 50vh;
   }
   .container {
     padding: 10vh 1vh;
