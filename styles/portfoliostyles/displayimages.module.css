@@ -1,11 +1,37 @@
+.bigcontainer {
+  background-color: black;
+  padding-top: 10vh;
+}
+
+.filter {
+  display: flex;
+  gap: 3vh;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.filter > button {
+  width: 200px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid white;
+  border-radius: 12px;
+  padding: 6px;
+}
+
+.filter > button.active {
+  background-color: aqua;
+}
+
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 5vh;
   justify-content: center;
   align-items: center;
-  padding: 10vh 20vh;
+  padding: 10vh;
   background-color: black;
+  width: 100%;
 }
 
 .card {

@@ -7,14 +7,15 @@ const DisplayImages = () => {
   const data = getAllImage();
   const [images, setImages] = useState(data);
 
-  const getFood = () => {
-    const food = data.filter((image) => image.category === "food");
-    setImages(food);
+  const getAll = () => {
+    setImages(data);
   };
 
-  const getBeverage = () => {
-    const beverage = data.filter((image) => image.category === "beverage");
-    setImages(beverage);
+  const getFoodBeverage = () => {
+    const food = data.filter(
+      (image) => image.category === "food" || image.category === "beverage"
+    );
+    setImages(food);
   };
 
   const getArchitecture = () => {
@@ -29,18 +30,33 @@ const DisplayImages = () => {
     setImages(lifestyle);
   };
 
+  const getProduct = () => {
+    const product = data.filter((image) => image.category === "product");
+    setImages(product);
+  };
+
   return (
-    <div className={classes.container}>
-      {images.map((image, i) => (
-        <ModalImage
-          small={image.url}
-          large={image.url}
-          className={classes.card}
-          alt={image.content}
-          hideDownload="true"
-          key={i}
-        />
-      ))}
+    <div className={classes.bigcontainer}>
+      <div className={classes.filter}>
+        <button onClick={getAll}>All</button>
+        <button onClick={getFoodBeverage}>F&B</button>
+        <button onClick={getArchitecture}>Architecure</button>
+        <button onClick={getLifestyle}>Lifestyle</button>
+        <button onClick={getProduct}>Product</button>
+      </div>
+
+      <div className={classes.container}>
+        {images.map((image, i) => (
+          <ModalImage
+            small={image.url}
+            large={image.url}
+            className={classes.card}
+            alt={image.content}
+            hideDownload="true"
+            key={i}
+          />
+        ))}
+      </div>
     </div>
   );
 };

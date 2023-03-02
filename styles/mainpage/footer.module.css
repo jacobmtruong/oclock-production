@@ -1,34 +1,24 @@
 .bigcontainer {
   width: 100%;
-  padding: 0vh 20vh;
+  padding: 0vh 10vh;
+  height: fit-content;
 }
 
 .container {
   width: 100%;
-  height: 6vh;
+  /* height: 6vh; */
   background-color: white;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-}
-
-.leftnest {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 8px;
+  position: relative;
+  padding: 1vh 0vh;
 }
 
 .bigcontainer > img {
   height: 25px;
   width: 25px;
-}
-
-.leftnest > p {
-  color: black;
-  font-size: 15px;
 }
 
 .rightnest {
@@ -46,15 +36,14 @@
 }
 
 .footerlegal {
+  margin: 0;
   font-style: normal;
   font-weight: bolder;
   font-size: 10px;
-  /* identical to box height, or 140% */
-  text-align: center;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  /* Neutral / Gray 50 */
-  color: #f8fafc;
+  color: black;
+  font-size: 12px;
 }
 
 .rightnest img {
@@ -69,31 +58,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 8vh;
-  gap: 3vh;
+  padding: 1vh 0vh;
   border-bottom: 2px solid black;
 }
 
 .navbar > ul {
   display: flex;
+  justify-content: center;
   gap: 2vh;
+  padding: 0;
+  margin: 0;
+  height: fit-content;
 }
 
 .navbar > p {
+  margin: 0;
+  padding: 0;
   display: flex;
-  align-self: center;
   gap: 1vh;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
 }
 
 .navbar > p > img {
-  height: 30px;
-  width: 30px;
+  height: 25px;
+  width: 25px;
 }
 
 .navbar > ul > li > a {
-  font-size: 24px;
+  font-size: 20px;
   text-decoration: none;
   color: black;
   font-weight: 600;

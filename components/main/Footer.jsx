@@ -18,16 +18,14 @@ const Footer = () => {
             <Link href="">Portfolio</Link>
           </li>
         </ul>
-
         <p>
           <Image src={pin} alt="pin-location" />
           Saigon, Vietnam
         </p>
       </div>
       <div className={classes.container}>
-        <div className={classes.leftnest}>
-          <p className={classes.footerlegal}>© 2023 O'CLOCK PRODUCTION</p>
-        </div>
+        <p className={classes.footerlegal}>© 2023 O'CLOCK PRODUCTION</p>
+
         <div className={classes.rightnest}>
           <Link href="">
             <Image src={igicon} alt="ig-icon" />
