@@ -27,7 +27,7 @@ export default async function handler(req, res) {
     const toAddress = process.env.CONTACT_EMAIL || process.env.SMTP_USER;
 
     await transporter.sendMail({
-      from: `"O'CLOCK Production Contact" <${process.env.SMTP_USER}>`,
+      from: `"O'CLOCK website Contact" <${process.env.SMTP_USER}>`,
       to: toAddress,
       replyTo: email,
       subject: subject || `New message from ${name}`,
