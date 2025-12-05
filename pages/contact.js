@@ -117,7 +117,9 @@ export default function Contact() {
                 <span className={classes.iconCircle}>✉︎</span>
                 <div>
                   <p className={classes.infoLabel}>Email</p>
-                  <p className={classes.infoText}>hello@oclockproduction.com</p>
+                  <p className={classes.infoText}>
+                    oclockproduction.info@gmail.com
+                  </p>
                 </div>
               </div>
 
@@ -135,7 +137,7 @@ export default function Contact() {
             <p className={classes.note}>
               Prefer to email directly? Reach us at{" "}
               <span className={classes.highlight}>
-                hello@oclockproduction.com
+                oclockproduction.info@gmail.com
               </span>
               .
             </p>
@@ -143,7 +145,7 @@ export default function Contact() {
 
           {/* RIGHT PANEL – form */}
           <section className={classes.rightPanel}>
-            <h2 className={classes.formTitle}>Contact form</h2>
+            <h2 className={classes.formTitle}>Contact</h2>
             <p className={classes.formDescription}>
               Fill in the form below and we&apos;ll get back to you via email.
             </p>

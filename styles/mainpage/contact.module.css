@@ -1,3 +1,7 @@
+/* =============================== */
+/*      CONTACT PAGE MAIN WRAP     */
+/* =============================== */
+
 .page {
   width: 100%;
   min-height: 80vh;
@@ -5,30 +9,34 @@
   justify-content: center;
   align-items: center;
   padding: 8vh 10vh;
-  background-color: black;
+  background-color: #000000; /* BLACK BACKGROUND */
   box-sizing: border-box;
 }
 
 .wrapper {
   width: 100%;
   max-width: 1120px;
-  background-color: #ffffff;
+  background-color: #000000; /* FULL BLACK CARD */
   border-radius: 18px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
   display: flex;
   overflow: hidden;
+  border: 2px solid #4f4f4f;
 }
 
-/* LEFT PANEL */
+/* =============================== */
+/*          LEFT PANEL             */
+/* =============================== */
 
 .leftPanel {
   flex: 1;
   padding: 5vh 5vh 5vh 5.5vh;
-  background: radial-gradient(circle at top left, #f5efe7, #ffffff 55%);
+  background-color: #000000;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 4vh;
+  color: #ffffff;
 }
 
 .brandBlock {
@@ -40,12 +48,15 @@
 .brandLogo {
   width: 64px;
   height: auto;
+  filter: brightness(0) invert(1); /* MAKE LOGO WHITE */
 }
 
 .heading {
   font-size: 2.4rem;
   line-height: 1.1;
   margin: 0;
+  color: #ffffff;
+  font-weight: 800;
 }
 
 .subheading {
@@ -53,7 +64,7 @@
   max-width: 320px;
   font-size: 0.98rem;
   line-height: 1.5;
-  color: #555555;
+  color: #d0d0d0;
 }
 
 .infoBlock {
@@ -71,6 +82,7 @@
 .icon {
   width: 22px;
   height: 22px;
+  filter: brightness(0) invert(1); /* MAKE ICONS WHITE */
 }
 
 .iconCircle {
@@ -80,8 +92,8 @@
   width: 28px;
   height: 28px;
   border-radius: 999px;
-  border: 1px solid #dddddd;
-  font-size: 0.82rem;
+  border: 1px solid #444;
+  color: #ffffff;
 }
 
 .infoLabel {
@@ -89,27 +101,30 @@
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: #888888;
+  color: #bbbbbb;
 }
 
 .infoText {
   margin: 0;
   font-size: 0.95rem;
-  color: #333333;
+  color: #ffffff;
 }
 
 .note {
   margin: 0;
   font-size: 0.85rem;
-  color: #666666;
+  color: #d4d4d4;
   max-width: 320px;
 }
 
 .highlight {
   font-weight: 600;
+  color: #ffffff;
 }
 
-/* RIGHT PANEL – FORM */
+/* =============================== */
+/*          RIGHT PANEL            */
+/* =============================== */
 
 .rightPanel {
   flex: 1.05;
@@ -118,19 +133,23 @@
   flex-direction: column;
   justify-content: center;
   gap: 2vh;
-  background-color: #fcfcfc;
-  border-left: 1px solid #f0f0f0;
+
+  background-color: #000000;
+  border-left: 2px solid #4f4f4f;
+  color: #ffffff;
 }
 
 .formTitle {
   margin: 0;
   font-size: 1.4rem;
+  color: #ffffff;
+  font-weight: 800;
 }
 
 .formDescription {
   margin: 0;
   font-size: 0.95rem;
-  color: #666666;
+  color: #d0d0d0;
 }
 
 .form {
@@ -155,33 +174,40 @@
 .formGroup label {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #333333;
+  color: #ffffff;
 }
 
 .formGroup input,
 .formGroup textarea {
   border-radius: 10px;
-  border: 1px solid #dddddd;
+  border: 1px solid #fff;
   padding: 10px 12px;
   font-size: 0.95rem;
-  outline: none;
-  background-color: #ffffff;
+  background-color: black;
+  color: #ffffff;
   transition: border-color 0.18s ease, box-shadow 0.18s ease,
     background-color 0.18s ease;
-  resize: vertical;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: #fff;
 }
 
 .formGroup input:focus,
 .formGroup textarea:focus {
-  border-color: #111111;
-  box-shadow: 0 0 0 1px #1111110d;
-  background-color: #ffffff;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 1px #ffffff;
 }
 
 .required {
-  color: #e5533d;
+  color: #ff7777;
   margin-left: 3px;
 }
+
+/* =============================== */
+/*        STATUS MESSAGES          */
+/* =============================== */
 
 .statusSuccess,
 .statusError {
@@ -191,27 +217,32 @@
 }
 
 .statusSuccess {
-  background-color: #e8f7ec;
-  color: #20663b;
-  border: 1px solid #bbe2c8;
+  background-color: #0f4025;
+  color: #9dffce;
+  border: 1px solid #2de797;
 }
 
 .statusError {
-  background-color: #fdeaea;
-  color: #8b1f1f;
-  border: 1px solid #f3b2b2;
+  background-color: #402020;
+  color: #ffb3b3;
+  border: 1px solid #ff6b6b;
 }
+
+/* =============================== */
+/*        SUBMIT BUTTON            */
+/* =============================== */
 
 .submitButton {
   margin-top: 0.5vh;
-  border: none;
-  border-radius: 999px;
+  border: 1px solid #fff;
+  border-radius: 10px;
   padding: 11px 24px;
   font-size: 0.95rem;
   font-weight: 500;
-  background-color: #111111;
-  color: #ffffff;
+  background-color: black;
+  color: #fff;
   cursor: pointer;
+
   align-self: flex-start;
   transition: transform 0.15s ease, box-shadow 0.15s ease,
     background-color 0.15s ease;
@@ -219,8 +250,9 @@
 
 .submitButton:hover:enabled {
   transform: translateY(-1px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-  background-color: #000000;
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.25);
+  background-color: #eaeaea;
+  color: black;
 }
 
 .submitButton:disabled {
@@ -228,7 +260,9 @@
   cursor: default;
 }
 
-/* RESPONSIVE */
+/* =============================== */
+/*          RESPONSIVE             */
+/* =============================== */
 
 @media (max-width: 900px) {
   .page {
@@ -246,7 +280,7 @@
 
   .rightPanel {
     border-left: none;
-    border-top: 1px solid #f0f0f0;
+    border-top: 1px solid #222;
   }
 
   .formRow {
