@@ -1,0 +1,265 @@
+.page {
+  width: 100%;
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8vh 10vh;
+  background-color: black;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 1120px;
+  background-color: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+  display: flex;
+  overflow: hidden;
+}
+
+/* LEFT PANEL */
+
+.leftPanel {
+  flex: 1;
+  padding: 5vh 5vh 5vh 5.5vh;
+  background: radial-gradient(circle at top left, #f5efe7, #ffffff 55%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 4vh;
+}
+
+.brandBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.brandLogo {
+  width: 64px;
+  height: auto;
+}
+
+.heading {
+  font-size: 2.4rem;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.subheading {
+  margin: 0;
+  max-width: 320px;
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: #555555;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8vh;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 1.5vh;
+}
+
+.icon {
+  width: 22px;
+  height: 22px;
+}
+
+.iconCircle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid #dddddd;
+  font-size: 0.82rem;
+}
+
+.infoLabel {
+  margin: 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #888888;
+}
+
+.infoText {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #333333;
+}
+
+.note {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666666;
+  max-width: 320px;
+}
+
+.highlight {
+  font-weight: 600;
+}
+
+/* RIGHT PANEL – FORM */
+
+.rightPanel {
+  flex: 1.05;
+  padding: 5vh 5.5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2vh;
+  background-color: #fcfcfc;
+  border-left: 1px solid #f0f0f0;
+}
+
+.formTitle {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.formDescription {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #666666;
+}
+
+.form {
+  margin-top: 2vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.formRow {
+  display: flex;
+  gap: 2vh;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.8vh;
+}
+
+.formGroup label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #333333;
+}
+
+.formGroup input,
+.formGroup textarea {
+  border-radius: 10px;
+  border: 1px solid #dddddd;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  outline: none;
+  background-color: #ffffff;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease,
+    background-color 0.18s ease;
+  resize: vertical;
+}
+
+.formGroup input:focus,
+.formGroup textarea:focus {
+  border-color: #111111;
+  box-shadow: 0 0 0 1px #1111110d;
+  background-color: #ffffff;
+}
+
+.required {
+  color: #e5533d;
+  margin-left: 3px;
+}
+
+.statusSuccess,
+.statusError {
+  font-size: 0.88rem;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+.statusSuccess {
+  background-color: #e8f7ec;
+  color: #20663b;
+  border: 1px solid #bbe2c8;
+}
+
+.statusError {
+  background-color: #fdeaea;
+  color: #8b1f1f;
+  border: 1px solid #f3b2b2;
+}
+
+.submitButton {
+  margin-top: 0.5vh;
+  border: none;
+  border-radius: 999px;
+  padding: 11px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  background-color: #111111;
+  color: #ffffff;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.submitButton:hover:enabled {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  background-color: #000000;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+  .page {
+    padding: 6vh 4vh;
+  }
+
+  .wrapper {
+    flex-direction: column;
+  }
+
+  .leftPanel,
+  .rightPanel {
+    padding: 4vh 4vh;
+  }
+
+  .rightPanel {
+    border-left: none;
+    border-top: 1px solid #f0f0f0;
+  }
+
+  .formRow {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 4vh 2vh;
+  }
+
+  .heading {
+    font-size: 1.9rem;
+  }
+}
