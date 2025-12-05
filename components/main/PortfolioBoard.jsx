@@ -2,6 +2,7 @@ import classes from "../../styles/mainpage/portfolioboard.module.css";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import Fade from "react-reveal/Fade";
+import { useRouter } from "next/router";
 
 const Portfolio = () => {
   const [data, setData] = useState(null);
@@ -45,7 +46,9 @@ const Portfolio = () => {
           </Fade>
         ))}
       </div>
-      <Link href="">Get in touch</Link>
+      <Link href="/contact" className={classes.getintouch}>
+        Get in touch
+      </Link>
     </div>
   );
 };
