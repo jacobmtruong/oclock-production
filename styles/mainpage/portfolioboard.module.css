@@ -45,7 +45,7 @@
   color: white;
   margin: 0 auto;
   font-size: 40px;
-  font-weight: 900;
+  font-weight: 100;
   position: absolute;
   text-transform: uppercase;
   top: 50%;
@@ -55,7 +55,7 @@
 
 .container > a {
   width: fit-content;
-  font-weight: 900;
+  font-weight: 100;
   font-size: 25px;
   text-decoration: none;
   text-transform: uppercase;

@@ -53,14 +53,14 @@
 }
 
 .content p:not(.title) {
-  font-weight: 600;
+  font-weight: 400;
   color: white;
   width: 30vh;
 }
 
 .content a {
   width: fit-content;
-  font-weight: 800;
+  font-weight: 200;
   text-transform: uppercase;
   text-decoration: none;
   color: white;

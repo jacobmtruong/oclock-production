@@ -27,7 +27,7 @@ const Portfolio = () => {
         <span
           style={{
             textTransform: "uppercase",
-            fontWeight: "900",
+            fontWeight: "300",
             letterSpacing: "5px",
           }}
         >

@@ -1,13 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@300;400;500;600;700&display=swap");
+
 html,
 body,
 * {
   padding: 0;
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 500;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 100;
   font-style: normal;
   font-variant: normal;
   box-sizing: border-box;
+}
+
+/* Titles = Barlow */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Barlow", sans-serif;
 }
 
 html,

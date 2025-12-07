@@ -18,10 +18,10 @@
 }
 
 .navbar a {
-  font-size: 20px;
+  font-size: 25px;
   text-decoration: none;
   color: white;
-  font-weight: bolder;
+  font-weight: 100;
   text-transform: uppercase;
   transition: 0.3s ease-in-out;
   position: relative;

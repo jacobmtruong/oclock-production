@@ -29,7 +29,7 @@
 
 .rightcontainer > p {
   color: black;
-  font-weight: 600;
+  font-weight: 400;
   width: 40vh;
 }
 
@@ -46,7 +46,7 @@
 }
 
 .rightcontainer > a:hover {
-  background-color: rgb(199, 196, 196);
+  background-color: black;
   color: white;
   border: 2px solid rgb(0, 0, 0);
 }
