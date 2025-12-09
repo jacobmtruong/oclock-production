@@ -35,16 +35,17 @@ const Portfolio = () => {
         </span>{" "}
       </p>
       <div className={classes.cardcontainer}>
-        {data?.map((card, i) => (
-          <Fade bottom>
-            <Link href="" key={i}>
-              <div className={classes.cardcover}>
-                <img src={card.url} className={classes.card} />
-                <p className={classes.content}>{card.content}</p>
-              </div>
-            </Link>
-          </Fade>
-        ))}
+        {data &&
+          data.map((card) => (
+            <Fade bottom cascade key={card.id}>
+              <Link href={`/portfolio/${card.slug}`}>
+                <div className={classes.cardcover}>
+                  <img src={card.url} className={classes.card} />
+                  <p className={classes.content}>{card.content}</p>
+                </div>
+              </Link>
+            </Fade>
+          ))}
       </div>
       <Link href="/contact" className={classes.getintouch}>
         Get in touch

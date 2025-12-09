@@ -42,6 +42,55 @@
   object-position: 50% 65%;
 }
 
+.title {
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+  padding: 0 10vh;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.title h1 {
+  font-size: 28px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.title p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.title a {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 400;
+}
+
+.title a:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+  .title {
+    padding: 0 3vh;
+    margin-bottom: 24px;
+  }
+
+  .title h1 {
+    font-size: 22px;
+    letter-spacing: 0.12em;
+  }
+
+  .title p {
+    font-size: 13px;
+  }
+}
+
 @media (max-width: 480px) {
   .card {
     width: 52vh;
