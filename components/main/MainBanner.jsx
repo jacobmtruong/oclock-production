@@ -51,7 +51,12 @@ export const MainBanner = () => {
               Contact
             </Link>
           </li>
-          <Link href="" className={classes.instagram}>
+          <Link
+            href="https://www.instagram.com/oclock.production?igsh=MTMwcmhkMHB3ajZ3Mw=="
+            className={classes.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image src={igicon} className={classes.image} alt="igicon" />
           </Link>
         </ul>

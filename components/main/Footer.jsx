@@ -27,10 +27,19 @@ const Footer = () => {
         <p className={classes.footerlegal}>© 2023 O'CLOCK PRODUCTION</p>
 
         <div className={classes.rightnest}>
-          <Link href="">
+          <Link
+            href="https://www.instagram.com/oclock.production?igsh=MTMwcmhkMHB3ajZ3Mw=="
+            className={classes.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image src={igicon} alt="ig-icon" />
           </Link>
-          <Link href="">
+          <Link
+            href="https://www.facebook.com/share/1JCFsQmY4p/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <Image src={fbicon} alt="ig-icon" />
           </Link>
         </div>
