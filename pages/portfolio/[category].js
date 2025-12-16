@@ -8,27 +8,33 @@ import classes from "../../styles/portfoliostyles/displayimages.module.css";
 import ModalImage from "react-modal-image";
 
 function getImagesByCategory(category) {
-  // always return an array of image objects { id, url, content, favorite }
   switch (category) {
     case "fnb":
-      // combine food + beverage, both landscape + portrait
+      // Food + Beverage combined
       return [
-        ...(photography.food.landscape || []),
-        ...(photography.food.portrait || []),
-        ...(photography.beverage.landscape || []).filter(Boolean),
-        ...(photography.beverage.portrait || []),
+        ...(photography.food?.landscape || []),
+        ...(photography.food?.portrait || []),
+        ...(photography.beverage?.landscape || []),
+        ...(photography.beverage?.portrait || []),
       ];
 
     case "product":
       return [
-        ...(photography.product.landscape || []),
-        ...(photography.product.portrait || []),
+        ...(photography.product?.landscape || []),
+        ...(photography.product?.portrait || []),
       ];
 
-    // you can add more when you have data:
-    // case "architecture":
-    // case "lifestyle":
-    //   return [...]
+    case "architecture":
+      return [
+        ...(photography.architecture?.landscape || []),
+        ...(photography.architecture?.portrait || []),
+      ];
+
+    case "lifestyle":
+      return [
+        ...(photography.lifestyle?.landscape || []),
+        ...(photography.lifestyle?.portrait || []),
+      ];
 
     default:
       return [];
