@@ -28,7 +28,7 @@
 }
 
 /* =========================
-   TITLE
+   TITLE / HEADER
 ========================= */
 .title {
   max-width: 1200px;
@@ -52,23 +52,11 @@
   opacity: 0.8;
 }
 
-/* ✅ ONLY underline the "Back to portfolio" link */
-.title p a {
-  color: #ffffff;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  font-weight: 400;
-}
-
-.title p a:hover {
-  opacity: 0.7;
-}
-
 /* =========================
-   CATEGORY BAR (FINAL BEHAVIOR)
-   ❌ No underline inactive
-   ❌ No underline hover
-   ✅ One underline active
+   CATEGORY BAR (BUTTONS)
+   ❌ no underline inactive
+   ❌ no underline hover
+   ✅ one underline active
 ========================= */
 .categoryBar {
   display: flex;
@@ -78,17 +66,23 @@
 }
 
 .categoryTab {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+
   color: rgba(255, 255, 255, 0.6);
   font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  text-decoration: none; /* 🚫 kill inherited underline */
+
   position: relative;
   padding-bottom: 6px;
   transition: color 0.3s ease;
 }
 
-/* underline element — hidden by default */
+/* underline element (hidden by default) */
 .categoryTab::after {
   content: "";
   position: absolute;
@@ -99,17 +93,17 @@
   background: white;
 }
 
-/* hover = color only (NO underline) */
+/* hover = color only */
 .categoryTab:hover {
   color: white;
 }
 
-/* ACTIVE CATEGORY */
+/* active tab */
 .categoryActive {
   color: white;
 }
 
-/* ✅ ONE underline ONLY when active */
+/* ONE underline only when active */
 .categoryActive::after {
   width: 100%;
 }
