@@ -1,29 +1,14 @@
+/* =========================
+   PAGE WRAPPER
+========================= */
 .bigcontainer {
   background-color: black;
   padding-top: 10vh;
 }
 
-.filter {
-  display: flex;
-  gap: 3vh;
-  justify-content: center;
-  font-size: 24px;
-  display: none;
-}
-
-.filter > button {
-  width: 200px;
-  background-color: transparent;
-  color: white;
-  border: 2px solid white;
-  border-radius: 12px;
-  padding: 6px;
-}
-
-.filter > button.active {
-  background-color: aqua;
-}
-
+/* =========================
+   GRID
+========================= */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -36,12 +21,15 @@
 }
 
 .card {
-  /* width: 25vh; */
   height: 35vh;
   object-fit: cover;
   object-position: 50% 65%;
+  cursor: pointer;
 }
 
+/* =========================
+   TITLE
+========================= */
 .title {
   max-width: 1200px;
   margin: 0 auto 40px auto;
@@ -64,17 +52,107 @@
   opacity: 0.8;
 }
 
-.title a {
+/* ✅ ONLY underline the "Back to portfolio" link */
+.title p a {
   color: #ffffff;
   text-decoration: underline;
   text-underline-offset: 3px;
   font-weight: 400;
 }
 
-.title a:hover {
+.title p a:hover {
   opacity: 0.7;
 }
 
+/* =========================
+   CATEGORY BAR (FINAL BEHAVIOR)
+   ❌ No underline inactive
+   ❌ No underline hover
+   ✅ One underline active
+========================= */
+.categoryBar {
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.categoryTab {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  text-decoration: none; /* 🚫 kill inherited underline */
+  position: relative;
+  padding-bottom: 6px;
+  transition: color 0.3s ease;
+}
+
+/* underline element — hidden by default */
+.categoryTab::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
+  background: white;
+}
+
+/* hover = color only (NO underline) */
+.categoryTab:hover {
+  color: white;
+}
+
+/* ACTIVE CATEGORY */
+.categoryActive {
+  color: white;
+}
+
+/* ✅ ONE underline ONLY when active */
+.categoryActive::after {
+  width: 100%;
+}
+
+/* =========================
+   FILTER BAR
+========================= */
+.filterBar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.filterBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+
+.filterBtn:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.filterActive {
+  background: white;
+  color: black;
+  border-color: white;
+  opacity: 1;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 @media (max-width: 768px) {
   .title {
     padding: 0 3vh;
@@ -89,15 +167,19 @@
   .title p {
     font-size: 13px;
   }
-}
 
-@media (max-width: 480px) {
-  .card {
-    width: 52vh;
-    height: 52vh;
+  .categoryBar {
+    gap: 14px;
   }
-  .container {
-    padding: 10vh 0vh;
+
+  .categoryTab {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+  }
+
+  .filterBtn {
+    font-size: 11px;
+    padding: 7px 12px;
   }
 }
 
@@ -106,7 +188,19 @@
     width: 50vh;
     height: 50vh;
   }
+
   .container {
     padding: 10vh 1vh;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    width: 52vh;
+    height: 52vh;
+  }
+
+  .container {
+    padding: 10vh 0vh;
   }
 }
