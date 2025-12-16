@@ -8,9 +8,6 @@ import photography from "../../data/data";
 import classes from "../../styles/portfoliostyles/displayimages.module.css";
 import ModalImage from "react-modal-image";
 
-/* =========================
-   CATEGORY CONFIG
-========================= */
 const CATEGORY_TABS = [
   { key: "fnb", label: "Food & Beverage" },
   { key: "product", label: "Product" },
@@ -18,9 +15,6 @@ const CATEGORY_TABS = [
   { key: "lifestyle", label: "Lifestyle" },
 ];
 
-/* =========================
-   HELPERS
-========================= */
 function getImagesByCategory(category) {
   if (category === "fnb") {
     return [
@@ -37,24 +31,15 @@ function getImagesByCategory(category) {
   ];
 }
 
-/* =========================
-   PAGE
-========================= */
 export default function PortfolioCategoryPage() {
   const router = useRouter();
   const category =
     typeof router.query.category === "string" ? router.query.category : "";
 
-  const [filter, setFilter] = useState("all");
+  const [filter, setFilter] = useState("all"); // all | landscape | portrait
 
   const images = useMemo(() => {
     if (!category) return [];
-
-    const all = (getImagesByCategory(category) || []).filter(Boolean);
-
-    if (filter === "favorites") {
-      return all.filter((img) => img.favorite);
-    }
 
     if (category === "fnb") {
       const foodL = photography.food?.landscape || [];
@@ -84,7 +69,7 @@ export default function PortfolioCategoryPage() {
     lifestyle: "Lifestyle",
   };
 
-  const pageTitle = titleMap[category] || "Portfolio";
+  const pageTitle = titleMap[category] || category || "Portfolio";
 
   if (!category) return null;
 
@@ -104,15 +89,14 @@ export default function PortfolioCategoryPage() {
             <Link href="/portfolio">Back to portfolio overview</Link>
           </p>
 
-          {/* =========================
-              CATEGORY BAR (NO SCROLL)
-          ========================= */}
+          {/* CATEGORY BAR */}
           <div className={classes.categoryBar}>
             {CATEGORY_TABS.map((tab) => (
               <Link
                 key={tab.key}
                 href={`/portfolio/${tab.key}`}
-                scroll={false} // ✅ THIS IS THE FIX
+                scroll={false}
+                onClick={() => setFilter("all")} // reset filter on category change
                 className={`${classes.categoryTab} ${
                   category === tab.key ? classes.categoryActive : ""
                 }`}
@@ -122,11 +106,9 @@ export default function PortfolioCategoryPage() {
             ))}
           </div>
 
-          {/* =========================
-              FILTER BAR (STATE ONLY)
-          ========================= */}
+          {/* FILTER BAR (Favorites removed) */}
           <div className={classes.filterBar}>
-            {["all", "landscape", "portrait", "favorites"].map((key) => (
+            {["all", "landscape", "portrait"].map((key) => (
               <button
                 key={key}
                 type="button"
@@ -141,9 +123,6 @@ export default function PortfolioCategoryPage() {
           </div>
         </div>
 
-        {/* =========================
-            GRID
-        ========================= */}
         <div className={classes.container}>
           {images.length === 0 ? (
             <p style={{ color: "white" }}>No images found.</p>
