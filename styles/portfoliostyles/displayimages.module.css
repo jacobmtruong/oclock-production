@@ -144,6 +144,11 @@
   opacity: 1;
 }
 
+/* Scroll target so we don't land under a sticky/fixed header */
+.galleryTop {
+  scroll-margin-top: 12vh; /* adjust if your header is taller */
+}
+
 /* =========================
    RESPONSIVE
 ========================= */

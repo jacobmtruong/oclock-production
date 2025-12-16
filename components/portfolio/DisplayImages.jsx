@@ -1,7 +1,7 @@
 import { getAllImage } from "../../data/images";
 import classes from "../../styles/portfoliostyles/displayimages.module.css";
 import ModalImage from "react-modal-image";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState, useLayoutEffect } from "react";
 
 const CATEGORY_TABS = [
   { key: "fnb", label: "Food & Beverage" },
@@ -22,6 +22,16 @@ const DisplayImages = () => {
 
   const [activeCategory, setActiveCategory] = useState("fnb");
   const [activeFilter, setActiveFilter] = useState("all");
+
+  // store scroll position when user clicks tabs
+  const scrollYRef = useRef(0);
+  const shouldRestoreScrollRef = useRef(false);
+
+  const rememberScroll = () => {
+    if (typeof window === "undefined") return;
+    scrollYRef.current = window.scrollY;
+    shouldRestoreScrollRef.current = true;
+  };
 
   const filteredImages = useMemo(() => {
     let result = [...data];
@@ -45,25 +55,49 @@ const DisplayImages = () => {
     return result;
   }, [data, activeCategory, activeFilter]);
 
+  // ✅ restore scroll AFTER render (and again after images settle)
+  useLayoutEffect(() => {
+    if (!shouldRestoreScrollRef.current) return;
+    if (typeof window === "undefined") return;
+
+    const y = scrollYRef.current;
+
+    // 1) restore immediately after layout
+    window.scrollTo({ top: y, left: 0, behavior: "auto" });
+
+    // 2) restore again next frame (some layouts shift)
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: y, left: 0, behavior: "auto" });
+    });
+
+    // 3) restore again slightly later (images load async → height changes)
+    const t = setTimeout(() => {
+      window.scrollTo({ top: y, left: 0, behavior: "auto" });
+      shouldRestoreScrollRef.current = false;
+    }, 250);
+
+    return () => clearTimeout(t);
+  }, [activeCategory, activeFilter, filteredImages.length]);
+
   const title =
     CATEGORY_TABS.find((t) => t.key === activeCategory)?.label || "Portfolio";
 
   return (
     <div className={classes.bigcontainer}>
-      {/* TITLE + TOGGLES */}
       <div className={classes.title}>
         <h1>{title}</h1>
         <p>Click any image to view it larger.</p>
 
-        {/* ✅ Category Tabs (no routing) */}
+        {/* CATEGORY TABS */}
         <div className={classes.categoryBar}>
           {CATEGORY_TABS.map((tab) => (
             <button
               key={tab.key}
               type="button"
               onClick={() => {
+                rememberScroll();
                 setActiveCategory(tab.key);
-                setActiveFilter("all"); // optional reset on category switch
+                setActiveFilter("all"); // optional reset
               }}
               className={`${classes.categoryTab} ${
                 activeCategory === tab.key ? classes.categoryActive : ""
@@ -74,13 +108,16 @@ const DisplayImages = () => {
           ))}
         </div>
 
-        {/* ✅ Filter Tabs */}
+        {/* FILTER TABS */}
         <div className={classes.filterBar}>
           {FILTER_TABS.map((tab) => (
             <button
               key={tab.key}
               type="button"
-              onClick={() => setActiveFilter(tab.key)}
+              onClick={() => {
+                rememberScroll();
+                setActiveFilter(tab.key);
+              }}
               className={`${classes.filterBtn} ${
                 activeFilter === tab.key ? classes.filterActive : ""
               }`}
@@ -98,12 +135,12 @@ const DisplayImages = () => {
         ) : (
           filteredImages.map((image) => (
             <ModalImage
+              key={`${image.category}-${image.id}`}
               small={image.url}
               large={image.url}
               className={classes.card}
               alt={image.content}
               hideDownload
-              key={`${image.category}-${image.id}`}
             />
           ))
         )}

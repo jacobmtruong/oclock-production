@@ -8,6 +8,9 @@ import photography from "../../data/data";
 import classes from "../../styles/portfoliostyles/displayimages.module.css";
 import ModalImage from "react-modal-image";
 
+/* =========================
+   CATEGORY CONFIG
+========================= */
 const CATEGORY_TABS = [
   { key: "fnb", label: "Food & Beverage" },
   { key: "product", label: "Product" },
@@ -15,6 +18,9 @@ const CATEGORY_TABS = [
   { key: "lifestyle", label: "Lifestyle" },
 ];
 
+/* =========================
+   HELPERS
+========================= */
 function getImagesByCategory(category) {
   if (category === "fnb") {
     return [
@@ -31,6 +37,9 @@ function getImagesByCategory(category) {
   ];
 }
 
+/* =========================
+   PAGE
+========================= */
 export default function PortfolioCategoryPage() {
   const router = useRouter();
   const category =
@@ -38,7 +47,6 @@ export default function PortfolioCategoryPage() {
 
   const [filter, setFilter] = useState("all");
 
-  // ✅ Hooks MUST run every render (even when category is empty)
   const images = useMemo(() => {
     if (!category) return [];
 
@@ -76,9 +84,8 @@ export default function PortfolioCategoryPage() {
     lifestyle: "Lifestyle",
   };
 
-  const pageTitle = titleMap[category] || category || "Portfolio";
+  const pageTitle = titleMap[category] || "Portfolio";
 
-  // ✅ Now it's safe to early-return AFTER hooks
   if (!category) return null;
 
   return (
@@ -97,12 +104,15 @@ export default function PortfolioCategoryPage() {
             <Link href="/portfolio">Back to portfolio overview</Link>
           </p>
 
-          {/* CATEGORY BAR */}
+          {/* =========================
+              CATEGORY BAR (NO SCROLL)
+          ========================= */}
           <div className={classes.categoryBar}>
             {CATEGORY_TABS.map((tab) => (
               <Link
                 key={tab.key}
                 href={`/portfolio/${tab.key}`}
+                scroll={false} // ✅ THIS IS THE FIX
                 className={`${classes.categoryTab} ${
                   category === tab.key ? classes.categoryActive : ""
                 }`}
@@ -112,7 +122,9 @@ export default function PortfolioCategoryPage() {
             ))}
           </div>
 
-          {/* FILTER BAR */}
+          {/* =========================
+              FILTER BAR (STATE ONLY)
+          ========================= */}
           <div className={classes.filterBar}>
             {["all", "landscape", "portrait", "favorites"].map((key) => (
               <button
@@ -129,6 +141,9 @@ export default function PortfolioCategoryPage() {
           </div>
         </div>
 
+        {/* =========================
+            GRID
+        ========================= */}
         <div className={classes.container}>
           {images.length === 0 ? (
             <p style={{ color: "white" }}>No images found.</p>
