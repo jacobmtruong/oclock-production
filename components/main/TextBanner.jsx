@@ -1,12 +1,30 @@
 import classes from "../../styles/mainpage/textbanner.module.css";
 import Link from "next/link";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 const TextBanner = () => {
   return (
     <div className={classes.container}>
-      <Fade bottom>
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+      >
         <p>Crisp and compelling photography for your brand</p>
+
         <div className={classes.rightcontainer}>
           <p>
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
@@ -14,9 +32,10 @@ const TextBanner = () => {
             maxime repudiandae nobis quisquam labore molestiae voluptas,
             praesentium.
           </p>
-          <Link href="">Explore</Link>
+
+          <Link href="/portfolio">Explore</Link>
         </div>
-      </Fade>
+      </motion.div>
     </div>
   );
 };

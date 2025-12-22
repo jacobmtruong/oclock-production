@@ -1,8 +1,26 @@
 import classes from "../../styles/mainpage/portfolioboard.module.css";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import Fade from "react-reveal/Fade";
-import { useRouter } from "next/router";
+import { motion } from "framer-motion";
+
+const containerVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 18 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" },
+  },
+};
 
 const Portfolio = () => {
   const [data, setData] = useState(null);
@@ -10,16 +28,20 @@ const Portfolio = () => {
 
   useEffect(() => {
     setLoading(true);
+
     fetch("/api/photography/portfoliocards")
       .then((res) => res.json())
-      .then((data) => {
-        setData(data);
+      .then((json) => {
+        setData(json);
         setLoading(false);
       })
-      .catch((rejected) => {
-        console.log(rejected);
+      .catch((err) => {
+        console.log(err);
+        setLoading(false);
       });
-  }, [data]);
+
+    // ✅ run once (prevents infinite fetch loop)
+  }, []);
 
   return (
     <div className={classes.container}>
@@ -34,19 +56,35 @@ const Portfolio = () => {
           Portfolio
         </span>{" "}
       </p>
-      <div className={classes.cardcontainer}>
+
+      <motion.div
+        className={classes.cardcontainer}
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+      >
+        {isLoading && <p style={{ color: "white" }}>Loading...</p>}
+
         {data &&
           data.map((card) => (
-            <Fade bottom cascade key={card.id}>
-              <Link href={`/portfolio/${card.slug}`}>
+            <motion.div key={card.id} variants={itemVariants}>
+              <Link
+                href={`/portfolio/${card.slug}`}
+                className={classes.cardlink}
+              >
                 <div className={classes.cardcover}>
-                  <img src={card.url} className={classes.card} />
+                  <img
+                    src={card.url}
+                    className={classes.card}
+                    alt={card.content}
+                  />
                   <p className={classes.content}>{card.content}</p>
                 </div>
               </Link>
-            </Fade>
+            </motion.div>
           ))}
-      </div>
+      </motion.div>
+
       <Link href="/contact" className={classes.getintouch}>
         Get in touch
       </Link>
