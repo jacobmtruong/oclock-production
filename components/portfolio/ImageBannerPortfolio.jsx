@@ -1,14 +1,31 @@
 import classes from "../../styles/portfoliostyles/imagebannerportfolio.module.css";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 const ImageBannerPortfolio = () => {
   return (
-    <Fade>
-      <div className={classes.container}>
-        <div className={classes.banner}></div>
+    <div className={classes.container}>
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, margin: "-80px" }}
+      >
         <p className={classes.title}>Portfolio</p>
-      </div>
-    </Fade>
+        <p className={classes.subtitle}></p>
+      </motion.div>
+    </div>
   );
 };
 

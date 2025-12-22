@@ -1,7 +1,6 @@
-import { getAllImage } from "../../data/images";
 import classes from "../../styles/portfoliostyles/displayimages.module.css";
 import ModalImage from "react-modal-image";
-import { useMemo, useRef, useState, useLayoutEffect } from "react";
+import { useMemo, useRef, useState, useLayoutEffect, useEffect } from "react";
 
 const CATEGORY_TABS = [
   { key: "fnb", label: "Food & Beverage" },
@@ -18,7 +17,8 @@ const FILTER_TABS = [
 ];
 
 const DisplayImages = () => {
-  const data = useMemo(() => getAllImage(), []);
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [activeCategory, setActiveCategory] = useState("fnb");
   const [activeFilter, setActiveFilter] = useState("all");
@@ -32,6 +32,34 @@ const DisplayImages = () => {
     scrollYRef.current = window.scrollY;
     shouldRestoreScrollRef.current = true;
   };
+
+  // ✅ fetch from MongoDB API once
+  useEffect(() => {
+    let ignore = false;
+
+    const load = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch("/api/portfolio/photos");
+        const json = await res.json();
+
+        if (!ignore) {
+          // json is array of docs
+          setData(Array.isArray(json) ? json : []);
+        }
+      } catch (e) {
+        console.error(e);
+        if (!ignore) setData([]);
+      } finally {
+        if (!ignore) setLoading(false);
+      }
+    };
+
+    load();
+    return () => {
+      ignore = true;
+    };
+  }, []);
 
   const filteredImages = useMemo(() => {
     let result = [...data];
@@ -47,7 +75,7 @@ const DisplayImages = () => {
 
     // view/favorite filter
     if (activeFilter === "favorites") {
-      result = result.filter((img) => img.favorite);
+      result = result.filter((img) => !!img.favorite);
     } else if (activeFilter === "landscape" || activeFilter === "portrait") {
       result = result.filter((img) => img.view === activeFilter);
     }
@@ -130,16 +158,20 @@ const DisplayImages = () => {
 
       {/* GRID */}
       <div className={classes.container}>
-        {filteredImages.length === 0 ? (
+        {loading ? (
+          <p style={{ color: "white" }}>Loading...</p>
+        ) : filteredImages.length === 0 ? (
           <p style={{ color: "white" }}>No images found.</p>
         ) : (
           filteredImages.map((image) => (
             <ModalImage
-              key={`${image.category}-${image.id}`}
+              key={
+                image._id || `${image.category}-${image.legacyId || image.url}`
+              }
               small={image.url}
               large={image.url}
               className={classes.card}
-              alt={image.content}
+              alt={image.content || "Portfolio image"}
               hideDownload
             />
           ))
