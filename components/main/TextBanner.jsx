@@ -1,23 +1,40 @@
 import classes from "../../styles/mainpage/textbanner.module.css";
 import Link from "next/link";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
+};
 
 const TextBanner = () => {
   return (
-    <div className={classes.container}>
-      <Fade bottom>
-        <p>Crisp and compelling photography for your brand</p>
-        <div className={classes.rightcontainer}>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
-            recusandae consequuntur consequatur maiores quibusdam voluptatem aut
-            maxime repudiandae nobis quisquam labore molestiae voluptas,
-            praesentium.
-          </p>
-          <Link href="">Explore</Link>
-        </div>
-      </Fade>
-    </div>
+    <motion.div
+      className={classes.container}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+    >
+      <p>Crisp and compelling photography for your brand</p>
+
+      <div className={classes.rightcontainer}>
+        <p>
+          Rooted in visual storytelling, each frame balances clarity and mood
+          through thoughtful composition and light, resulting in imagery that
+          feels composed, modern, and quietly confident.
+        </p>
+
+        <Link href="/portfolio">Explore</Link>
+      </div>
+    </motion.div>
   );
 };
 

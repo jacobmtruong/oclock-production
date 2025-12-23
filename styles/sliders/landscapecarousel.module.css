@@ -1,15 +1,17 @@
 .container {
-  border: 1px solid black;
   padding: 15vh 0vh;
   width: 100%;
   margin: auto;
   background-color: rgb(22, 21, 19);
   position: relative;
-  border: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 2vw;
+}
+
+.carouselWrap {
+  display: block;
 }
 
 .carousel {
@@ -26,15 +28,6 @@
   font-weight: 800;
   text-transform: uppercase;
   display: none;
-}
-
-.container > p {
-  text-align: center;
-  font-size: 25px;
-  font-weight: 300;
-  padding: 20px;
-  position: absolute;
-  z-index: 7;
 }
 
 .content {
@@ -82,28 +75,36 @@
     background-color: black;
     padding: 10vh 0vh;
   }
+
   .carousel {
     width: 100%;
     height: 50vh;
   }
+
   .carouselitem > img {
     height: 50vh;
     object-fit: cover;
   }
+
   .caption > h3 {
     font-size: 20px;
     font-weight: 900;
   }
+
   .title {
     font-size: 35px;
   }
+
   .content {
     width: 80%;
   }
+
   .content p:not(.title) {
     text-align: justify;
-    width: 40vh;
+    width: 100%;
+    max-width: 100%;
     align-self: flex-end;
+    overflow-wrap: anywhere;
   }
 
   .content > a {

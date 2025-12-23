@@ -2,7 +2,16 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import classes from "../../styles/sliders/landscapecarousel.module.css";
-import Fade from "react-reveal/Fade";
+import { motion } from "framer-motion";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: "easeOut" },
+  },
+};
 
 export const LandscapeCarousel = () => {
   const [data, setData] = useState(null);
@@ -12,24 +21,39 @@ export const LandscapeCarousel = () => {
     setLoading(true);
     fetch("/api/photography/landscape")
       .then((res) => res.json())
-      .then((data) => {
-        setData(data);
+      .then((json) => {
+        setData(json);
         setLoading(false);
       })
-      .catch((rejected) => {
-        console.log(rejected);
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
       });
-  }, [data]);
+  }, []);
 
   return (
-    <div className={classes.container}>
-      <Fade bottom>
+    <motion.div
+      className={classes.container}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+    >
+      {/* Carousel */}
+      <div className={classes.carouselWrap}>
         <Carousel className={classes.carousel} fade>
+          {isLoading && (
+            <Carousel.Item>
+              <div style={{ height: "60vh" }} />
+            </Carousel.Item>
+          )}
+
           {data?.map((picture, i) => (
             <Carousel.Item className={classes.carouselitem} key={i}>
               <Carousel.Caption className={classes.caption}>
                 <h3>{picture.content}</h3>
               </Carousel.Caption>
+
               <img
                 className="d-block w-100"
                 src={picture.url}
@@ -38,17 +62,21 @@ export const LandscapeCarousel = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <div className={classes.content}>
-          <p className={classes.title}>Take your business to the next level</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut,
-            repudiandae? Provident officia nisi molestias, repudiandae, sed
-            alias voluptatum voluptatibus consectetur repellendus assumenda quo
-            temporibus? Autem nemo consequuntur adipisci nam blanditiis!
-          </p>
-          <Link href="">Find out how</Link>
-        </div>
-      </Fade>
-    </div>
+      </div>
+
+      {/* Content */}
+      <div className={classes.content}>
+        <p className={classes.title}>Take your business to the next level</p>
+
+        <p>
+          Food and product photography built to take your business to the next
+          level. Through refined lighting, modern composition, and visual
+          storytelling, brands are elevated and products are brought to life
+          across digital and print.
+        </p>
+
+        <Link href="/contact">Find out how</Link>
+      </div>
+    </motion.div>
   );
 };

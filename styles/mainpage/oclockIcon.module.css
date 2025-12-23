@@ -1,7 +1,24 @@
-.image {
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1vh;
+}
+
+/* wrapper controls size and removes odd columns */
+.iconWrap {
   width: 8vh;
   height: 8vh;
-  align-self: center;
+  position: relative;
+  flex: 0 0 auto;
+  display: block;
+  overflow: hidden; /* just in case */
+  background: transparent; /* prevent any gray background */
+}
+
+.image {
+  object-fit: contain;
+  display: block; /* prevents baseline gaps */
   animation: rotation 50s infinite linear;
 }
 
@@ -14,19 +31,6 @@
   }
 }
 
-.container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1vh;
-}
-
-.production {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 .text {
   font-size: 25px;
   color: white;
@@ -37,10 +41,9 @@
 }
 
 @media (max-width: 480px) {
-  .image {
-    width: 40vw;
-    height: 40vw;
-    animation: none;
+  .iconWrap {
+    width: 50vw;
+    height: 50vw;
   }
   .text {
     display: none;
@@ -48,10 +51,9 @@
 }
 
 @media (max-width: 800px) {
-  .image {
-    width: 25vw;
-    height: 25vw;
-    animation: none;
+  .iconWrap {
+    width: 30vw;
+    height: 30vw;
   }
   .text {
     display: none;
