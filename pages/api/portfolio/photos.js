@@ -4,9 +4,11 @@ import Photo from "../../../models/Photo";
 export default async function handler(req, res) {
   try {
     await dbConnect();
+
     const photos = await Photo.find({}).sort({ legacyId: 1, createdAt: 1 });
-    res.status(200).json(photos);
+
+    return res.status(200).json(photos);
   } catch (err) {
-    res.status(500).json({ ok: false, error: err.message });
+    return res.status(500).json({ ok: false, error: err.message });
   }
 }
