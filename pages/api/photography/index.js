@@ -1,4 +1,4 @@
-import dbConnect from "../../../../lib/mongodb";
+import dbConnect from "../../../lib/mongodb";
 import Photo from "../../../../models/Photo";
 
 export default async function handler(req, res) {
