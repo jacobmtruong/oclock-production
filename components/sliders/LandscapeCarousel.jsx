@@ -4,9 +4,6 @@ import Carousel from "react-bootstrap/Carousel";
 import classes from "../../styles/sliders/landscapecarousel.module.css";
 import { motion } from "framer-motion";
 
-/* =========================
-   Animation variants
-========================= */
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
   show: {
@@ -20,12 +17,8 @@ export const LandscapeCarousel = () => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
 
-  /* =========================
-     Fetch once (FIXED)
-  ========================= */
   useEffect(() => {
     setLoading(true);
-
     fetch("/api/photography/landscape")
       .then((res) => res.json())
       .then((json) => {
@@ -36,19 +29,18 @@ export const LandscapeCarousel = () => {
         console.error(err);
         setLoading(false);
       });
-  }, []); // ✅ run once only
+  }, []);
 
   return (
-    <div className={classes.container}>
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-      >
-        {/* =========================
-            Carousel
-        ========================= */}
+    <motion.div
+      className={classes.container}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+    >
+      {/* Carousel */}
+      <div className={classes.carouselWrap}>
         <Carousel className={classes.carousel} fade>
           {isLoading && (
             <Carousel.Item>
@@ -70,23 +62,21 @@ export const LandscapeCarousel = () => {
             </Carousel.Item>
           ))}
         </Carousel>
+      </div>
 
-        {/* =========================
-            Content
-        ========================= */}
-        <div className={classes.content}>
-          <p className={classes.title}>Take your business to the next level</p>
+      {/* Content */}
+      <div className={classes.content}>
+        <p className={classes.title}>Take your business to the next level</p>
 
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut,
-            repudiandae? Provident officia nisi molestias, repudiandae, sed
-            alias voluptatum voluptatibus consectetur repellendus assumenda quo
-            temporibus? Autem nemo consequuntur adipisci nam blanditiis!
-          </p>
+        <p>
+          Food and product photography built to take your business to the next
+          level. Through refined lighting, modern composition, and visual
+          storytelling, brands are elevated and products are brought to life
+          across digital and print.
+        </p>
 
-          <Link href="/contact">Find out how</Link>
-        </div>
-      </motion.div>
-    </div>
+        <Link href="/contact">Find out how</Link>
+      </div>
+    </motion.div>
   );
 };

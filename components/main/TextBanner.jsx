@@ -16,27 +16,25 @@ const fadeUp = {
 
 const TextBanner = () => {
   return (
-    <div className={classes.container}>
-      <motion.div
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true, margin: "-80px" }}
-      >
-        <p>Crisp and compelling photography for your brand</p>
+    <motion.div
+      className={classes.container}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: true, margin: "-80px" }}
+    >
+      <p>Crisp and compelling photography for your brand</p>
 
-        <div className={classes.rightcontainer}>
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo
-            recusandae consequuntur consequatur maiores quibusdam voluptatem aut
-            maxime repudiandae nobis quisquam labore molestiae voluptas,
-            praesentium.
-          </p>
+      <div className={classes.rightcontainer}>
+        <p>
+          Rooted in visual storytelling, each frame balances clarity and mood
+          through thoughtful composition and light, resulting in imagery that
+          feels composed, modern, and quietly confident.
+        </p>
 
-          <Link href="/portfolio">Explore</Link>
-        </div>
-      </motion.div>
-    </div>
+        <Link href="/portfolio">Explore</Link>
+      </div>
+    </motion.div>
   );
 };
 
