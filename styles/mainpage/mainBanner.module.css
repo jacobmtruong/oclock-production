@@ -101,12 +101,13 @@
     flex-direction: column;
     gap: 100px;
     padding-top: 6vh;
+    padding-bottom: 12vh;
   }
   .navbar {
     flex-direction: column;
   }
   .banner {
-    height: 50vh;
+    height: 40vh;
   }
 }
 

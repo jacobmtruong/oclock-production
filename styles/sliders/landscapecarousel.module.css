@@ -102,8 +102,10 @@
 
   .content p:not(.title) {
     text-align: justify;
-    width: 40vh;
+    width: 100%;
+    max-width: 100%;
     align-self: flex-end;
+    overflow-wrap: anywhere;
   }
 
   .content > a {
