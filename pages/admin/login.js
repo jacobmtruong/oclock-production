@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
+import icon from "../../styles/images/circleicon.png";
+import classes from "../../styles/mainpage/oclockIcon.module.css";
+import Image from "next/image";
 
 export default function AdminLoginPage() {
   const router = useRouter();
@@ -51,7 +54,25 @@ export default function AdminLoginPage() {
           onSubmit={submit}
           style={{ width: 360, display: "grid", gap: 12 }}
         >
-          <h1 style={{ margin: 0 }}>Admin Login</h1>
+          <h1
+            style={{
+              margin: 0,
+              display: "flex",
+              alignItems: "center",
+              gap: 10,
+            }}
+          >
+            {" "}
+            <Image
+              src={icon}
+              alt="oclock-icon"
+              className={classes.image}
+              width={70}
+              height={70}
+              priority
+            />
+            Admin
+          </h1>
 
           <input
             value={email}
