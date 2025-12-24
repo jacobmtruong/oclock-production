@@ -361,7 +361,7 @@ export default function AdminPhotosPage() {
                         border: "1px solid rgba(255,255,255,0.10)",
                         borderRadius: 14,
                         padding: 10,
-                        minHeight: 140,
+                        minHeight: 200,
                         display: "grid",
                         gap: 8,
                       }}
@@ -394,7 +394,7 @@ export default function AdminPhotosPage() {
                             alt={slot.label}
                             style={{
                               width: "100%",
-                              height: 90,
+                              height: 160,
                               objectFit: "cover",
                               borderRadius: 12,
                               border: "1px solid rgba(255,255,255,0.12)",
