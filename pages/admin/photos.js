@@ -109,7 +109,6 @@ export default function AdminPhotosPage() {
       const okView = viewFilter === "all" ? true : p.view === viewFilter;
 
       if (!okCategory || !okView) return false;
-
       if (!query) return true;
 
       const hay = `${p.content || ""} ${p.category || ""} ${p.view || ""} ${
@@ -270,18 +269,8 @@ export default function AdminPhotosPage() {
             borderBottom: "1px solid rgba(255,255,255,0.10)",
           }}
         >
-          <div
-            style={{ maxWidth: 1200, margin: "0 auto", padding: "18px 16px" }}
-          >
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "flex-end",
-                gap: 12,
-                flexWrap: "wrap",
-              }}
-            >
+          <div className="wrap">
+            <div className="headerRow">
               <div>
                 <h1
                   style={{
@@ -305,14 +294,7 @@ export default function AdminPhotosPage() {
                 </p>
               </div>
 
-              <div
-                style={{
-                  display: "flex",
-                  gap: 10,
-                  alignItems: "center",
-                  flexWrap: "wrap",
-                }}
-              >
+              <div className="headerActions">
                 <button style={btnGhost} onClick={load}>
                   Refresh
                 </button>
@@ -345,13 +327,7 @@ export default function AdminPhotosPage() {
                 Portfolio board thumbnails (choose 1 per slot)
               </div>
 
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "repeat(4, 1fr)",
-                  gap: 10,
-                }}
-              >
+              <div className="thumbGrid">
                 {BOARD_KEYS.map((slot) => {
                   const p = selectedThumbs[slot.key];
                   return (
@@ -414,14 +390,7 @@ export default function AdminPhotosPage() {
             </div>
 
             {/* Search / Filters */}
-            <div
-              style={{
-                display: "flex",
-                gap: 10,
-                flexWrap: "wrap",
-                marginTop: 14,
-              }}
-            >
+            <div className="filtersRow">
               <input
                 value={q}
                 onChange={(e) => setQ(e.target.value)}
@@ -483,13 +452,7 @@ export default function AdminPhotosPage() {
           </div>
         </div>
 
-        <div
-          style={{
-            maxWidth: 1200,
-            margin: "0 auto",
-            padding: "18px 16px 40px 16px",
-          }}
-        >
+        <div className="wrap" style={{ paddingBottom: 40 }}>
           {/* Add Form */}
           <form
             onSubmit={add}
@@ -524,14 +487,7 @@ export default function AdminPhotosPage() {
               </button>
             </div>
 
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "1.5fr 1fr",
-                gap: 12,
-                marginTop: 12,
-              }}
-            >
+            <div className="formGrid">
               <div style={{ display: "grid", gap: 8 }}>
                 <label style={labelSmall}>Image URL *</label>
                 <input
@@ -632,105 +588,196 @@ export default function AdminPhotosPage() {
             </div>
           </form>
 
-          {/* Table */}
+          {/* Table + Cards */}
           <div style={{ marginTop: 16 }}>
             {loading ? (
               <p style={{ opacity: 0.8 }}>Loading...</p>
             ) : filtered.length === 0 ? (
               <p style={{ opacity: 0.8 }}>No photos found.</p>
             ) : (
-              <div
-                style={{
-                  overflowX: "auto",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                  borderRadius: 16,
-                  background: "rgba(255,255,255,0.02)",
-                }}
-              >
-                <table
-                  style={{
-                    width: "100%",
-                    borderCollapse: "collapse",
-                    minWidth: 1180,
-                  }}
-                >
-                  <thead>
-                    <tr>
-                      <th style={thDark}>Preview</th>
-                      <th style={thDark}>Category</th>
-                      <th style={thDark}>View</th>
-                      <th style={thDark}>Fav</th>
-                      <th style={thDark}>Content</th>
-                      <th style={thDark}>Board</th>
-                      <th style={thDark}>Link</th>
-                      <th style={thDark}>Actions</th>
-                    </tr>
-                  </thead>
+              <>
+                {/* Desktop Table */}
+                <div className="tableWrap">
+                  <div
+                    style={{
+                      overflowX: "auto",
+                      border: "1px solid rgba(255,255,255,0.12)",
+                      borderRadius: 16,
+                      background: "rgba(255,255,255,0.02)",
+                    }}
+                  >
+                    <table
+                      style={{
+                        width: "100%",
+                        borderCollapse: "collapse",
+                        minWidth: 1180,
+                      }}
+                    >
+                      <thead>
+                        <tr>
+                          <th style={thDark}>Preview</th>
+                          <th style={thDark}>Category</th>
+                          <th style={thDark}>View</th>
+                          <th style={thDark}>Fav</th>
+                          <th style={thDark}>Content</th>
+                          <th style={thDark}>Board</th>
+                          <th style={thDark}>Link</th>
+                          <th style={thDark}>Actions</th>
+                        </tr>
+                      </thead>
 
-                  <tbody>
-                    {filtered.map((p) => (
-                      <tr
-                        key={p._id}
-                        style={{
-                          borderTop: "1px solid rgba(255,255,255,0.10)",
-                        }}
-                      >
-                        <td style={tdDark}>
-                          <button
-                            type="button"
-                            onClick={() =>
-                              openLightbox(p.url, `${p.category} · ${p.view}`)
-                            }
+                      <tbody>
+                        {filtered.map((p) => (
+                          <tr
+                            key={p._id}
                             style={{
-                              padding: 0,
-                              border: "none",
-                              background: "transparent",
-                              cursor: "pointer",
+                              borderTop: "1px solid rgba(255,255,255,0.10)",
                             }}
-                            title="Click to preview"
                           >
-                            <img
-                              src={p.url}
-                              alt={p.content || "photo"}
-                              style={{
-                                width: 180,
-                                height: 100,
-                                objectFit: "cover",
-                                borderRadius: 12,
-                                border: "1px solid rgba(255,255,255,0.12)",
-                                display: "block",
-                              }}
-                            />
-                          </button>
-                        </td>
+                            <td style={tdDark}>
+                              <button
+                                type="button"
+                                onClick={() =>
+                                  openLightbox(
+                                    p.url,
+                                    `${p.category} · ${p.view}`
+                                  )
+                                }
+                                style={{
+                                  padding: 0,
+                                  border: "none",
+                                  background: "transparent",
+                                  cursor: "pointer",
+                                }}
+                                title="Click to preview"
+                              >
+                                <img
+                                  src={p.url}
+                                  alt={p.content || "photo"}
+                                  style={{
+                                    width: 180,
+                                    height: 100,
+                                    objectFit: "cover",
+                                    borderRadius: 12,
+                                    border: "1px solid rgba(255,255,255,0.12)",
+                                    display: "block",
+                                  }}
+                                />
+                              </button>
+                            </td>
 
-                        <td style={tdDark}>{p.category}</td>
-                        <td style={tdDark}>{p.view}</td>
-                        <td style={tdDark}>{p.favorite ? "★" : ""}</td>
-                        <td style={tdDark} title={p.content || ""}>
-                          {p.content || ""}
-                        </td>
+                            <td style={tdDark}>{p.category}</td>
+                            <td style={tdDark}>{p.view}</td>
+                            <td style={tdDark}>{p.favorite ? "★" : ""}</td>
+                            <td style={tdDark} title={p.content || ""}>
+                              {p.content || ""}
+                            </td>
 
-                        {/* ✅ Thumbnail selector */}
-                        <td style={tdDark}>
-                          <select
-                            value={p.boardKey || ""}
-                            onChange={(e) =>
-                              setBoardKey(p._id, e.target.value || null)
-                            }
-                            style={selectDark}
-                            title="Choose thumbnail slot"
+                            {/* ✅ Thumbnail selector */}
+                            <td style={tdDark}>
+                              <select
+                                value={p.boardKey || ""}
+                                onChange={(e) =>
+                                  setBoardKey(p._id, e.target.value || null)
+                                }
+                                style={selectDark}
+                                title="Choose thumbnail slot"
+                              >
+                                <option value="">(not a thumbnail)</option>
+                                {BOARD_KEYS.map((s) => (
+                                  <option key={s.key} value={s.key}>
+                                    {s.label}
+                                  </option>
+                                ))}
+                              </select>
+                            </td>
+
+                            <td style={tdDark}>
+                              <a
+                                href={p.url}
+                                target="_blank"
+                                rel="noreferrer"
+                                style={{
+                                  color: "white",
+                                  opacity: 0.75,
+                                  textDecoration: "underline",
+                                  textUnderlineOffset: 3,
+                                }}
+                              >
+                                open
+                              </a>
+                            </td>
+
+                            <td style={tdDark}>
+                              <button
+                                onClick={() => del(p._id)}
+                                style={btnDanger}
+                              >
+                                Delete
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Mobile Cards */}
+                <div className="cardsWrap">
+                  {filtered.map((p) => (
+                    <div className="card" key={p._id}>
+                      <div className="cardTop">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            openLightbox(p.url, `${p.category} · ${p.view}`)
+                          }
+                          style={{
+                            padding: 0,
+                            border: "none",
+                            background: "transparent",
+                            cursor: "pointer",
+                          }}
+                          title="Click to preview"
+                        >
+                          <img
+                            src={p.url}
+                            alt={p.content || "photo"}
+                            style={{
+                              width: 110,
+                              height: 80,
+                              objectFit: "cover",
+                              borderRadius: 12,
+                              border: "1px solid rgba(255,255,255,0.12)",
+                              display: "block",
+                            }}
+                          />
+                        </button>
+
+                        <div className="meta">
+                          <div
+                            style={{
+                              fontSize: 14,
+                              fontWeight: 600,
+                              opacity: 0.95,
+                            }}
                           >
-                            <option value="">(not a thumbnail)</option>
-                            {BOARD_KEYS.map((s) => (
-                              <option key={s.key} value={s.key}>
-                                {s.label}
-                              </option>
-                            ))}
-                          </select>
-                        </td>
+                            {p.content || "(no content)"}
+                          </div>
 
-                        <td style={tdDark}>
+                          <div className="metaRow">
+                            <span>{p.category}</span>
+                            <span>·</span>
+                            <span>{p.view}</span>
+                            {p.favorite ? (
+                              <>
+                                <span>·</span>
+                                <span>★</span>
+                              </>
+                            ) : null}
+                          </div>
+
                           <a
                             href={p.url}
                             target="_blank"
@@ -740,22 +787,38 @@ export default function AdminPhotosPage() {
                               opacity: 0.75,
                               textDecoration: "underline",
                               textUnderlineOffset: 3,
+                              width: "fit-content",
                             }}
                           >
-                            open
+                            open link
                           </a>
-                        </td>
+                        </div>
+                      </div>
 
-                        <td style={tdDark}>
-                          <button onClick={() => del(p._id)} style={btnDanger}>
-                            Delete
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                      <div className="cardActions">
+                        <select
+                          value={p.boardKey || ""}
+                          onChange={(e) =>
+                            setBoardKey(p._id, e.target.value || null)
+                          }
+                          style={selectDark}
+                        >
+                          <option value="">(not a thumbnail)</option>
+                          {BOARD_KEYS.map((s) => (
+                            <option key={s.key} value={s.key}>
+                              {s.label}
+                            </option>
+                          ))}
+                        </select>
+
+                        <button onClick={() => del(p._id)} style={btnDanger}>
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
             )}
           </div>
 
@@ -765,6 +828,153 @@ export default function AdminPhotosPage() {
           </p>
         </div>
       </div>
+
+      {/* Responsive CSS */}
+      <style jsx>{`
+        .wrap {
+          max-width: 1200px;
+          margin: 0 auto;
+          padding: 18px 16px;
+        }
+
+        .headerRow {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-end;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .headerActions {
+          display: flex;
+          gap: 10px;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .thumbGrid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 10px;
+        }
+
+        .filtersRow {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          margin-top: 14px;
+        }
+
+        .filtersRow > :global(input),
+        .filtersRow > :global(select),
+        .filtersRow > :global(button) {
+          flex: 1 1 180px;
+        }
+
+        .formGrid {
+          display: grid;
+          grid-template-columns: 1.5fr 1fr;
+          gap: 12px;
+          margin-top: 12px;
+        }
+
+        /* Tablet */
+        @media (max-width: 1024px) {
+          .thumbGrid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 640px) {
+          .headerRow {
+            align-items: flex-start;
+          }
+
+          .headerActions {
+            width: 100%;
+          }
+
+          .headerActions > :global(button) {
+            flex: 1 1 auto;
+          }
+
+          .thumbGrid {
+            grid-template-columns: 1fr;
+          }
+
+          .formGrid {
+            grid-template-columns: 1fr;
+          }
+
+          .filtersRow > :global(input) {
+            flex-basis: 100%;
+          }
+        }
+
+        /* Table vs cards */
+        .tableWrap {
+          display: block;
+        }
+        .cardsWrap {
+          display: none;
+        }
+
+        @media (max-width: 820px) {
+          .tableWrap {
+            display: none;
+          }
+          .cardsWrap {
+            display: grid;
+            gap: 10px;
+          }
+        }
+
+        .card {
+          border: 1px solid rgba(255, 255, 255, 0.12);
+          border-radius: 16px;
+          background: rgba(255, 255, 255, 0.02);
+          padding: 12px;
+          display: grid;
+          gap: 10px;
+        }
+
+        .cardTop {
+          display: grid;
+          grid-template-columns: 110px 1fr;
+          gap: 12px;
+          align-items: start;
+        }
+
+        .meta {
+          display: grid;
+          gap: 6px;
+          font-size: 13px;
+          opacity: 0.9;
+        }
+
+        .metaRow {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+          opacity: 0.85;
+          font-size: 12px;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .cardActions {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        .cardActions > :global(button),
+        .cardActions > :global(select),
+        .cardActions > :global(a) {
+          flex: 1 1 160px;
+        }
+      `}</style>
     </>
   );
 }
