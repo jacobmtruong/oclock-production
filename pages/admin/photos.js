@@ -5,6 +5,14 @@ import { isAdminFromToken } from "../../lib/adminAuth";
 const CATEGORIES = ["food", "beverage", "product", "architecture", "lifestyle"];
 const VIEWS = ["landscape", "portrait"];
 
+// ✅ 4 thumbnail slots for PortfolioBoard
+const BOARD_KEYS = [
+  { key: "fnb", label: "Thumbnail: Food & Beverage" },
+  { key: "product", label: "Thumbnail: Product" },
+  { key: "architecture", label: "Thumbnail: Architecture" },
+  { key: "lifestyle", label: "Thumbnail: Lifestyle" },
+];
+
 export default function AdminPhotosPage() {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -89,8 +97,6 @@ export default function AdminPhotosPage() {
   };
 
   const logout = async () => {
-    // If you have /api/admin/logout, use it:
-    // await fetch("/api/admin/logout");
     window.location.href = "/admin/login";
   };
 
@@ -113,6 +119,16 @@ export default function AdminPhotosPage() {
     });
   }, [photos, q, categoryFilter, viewFilter]);
 
+  // ✅ Current selected thumbnails (4)
+  const selectedThumbs = useMemo(() => {
+    const map = {};
+    for (const slot of BOARD_KEYS) map[slot.key] = null;
+    for (const p of photos) {
+      if (p.boardKey && map[p.boardKey] === null) map[p.boardKey] = p;
+    }
+    return map;
+  }, [photos]);
+
   const openLightbox = (url, title) => {
     setLightboxUrl(url);
     setLightboxTitle(title || "");
@@ -132,6 +148,23 @@ export default function AdminPhotosPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, []);
+
+  // ✅ Assign / unassign a thumbnail slot
+  const setBoardKey = async (id, boardKey) => {
+    setMsg("");
+
+    const res = await fetch("/api/admin/photos", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, boardKey }),
+    });
+
+    const data = await res.json();
+    if (!res.ok) return setMsg(data.message || "Failed to update thumbnail");
+
+    // reload to reflect "only one per slot"
+    await load();
+  };
 
   return (
     <>
@@ -225,13 +258,7 @@ export default function AdminPhotosPage() {
         </div>
       )}
 
-      <div
-        style={{
-          minHeight: "100vh",
-          background: "black",
-          color: "white",
-        }}
-      >
+      <div style={{ minHeight: "100vh", background: "black", color: "white" }}>
         {/* Header */}
         <div
           style={{
@@ -292,6 +319,97 @@ export default function AdminPhotosPage() {
                 <button style={btnGhost} onClick={logout}>
                   Back to Login
                 </button>
+              </div>
+            </div>
+
+            {/* ✅ Thumbnail slots panel */}
+            <div
+              style={{
+                marginTop: 14,
+                border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: 16,
+                background: "rgba(255,255,255,0.02)",
+                padding: 12,
+                display: "grid",
+                gap: 10,
+              }}
+            >
+              <div
+                style={{
+                  opacity: 0.9,
+                  letterSpacing: "0.12em",
+                  textTransform: "uppercase",
+                  fontSize: 12,
+                }}
+              >
+                Portfolio board thumbnails (choose 1 per slot)
+              </div>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "repeat(4, 1fr)",
+                  gap: 10,
+                }}
+              >
+                {BOARD_KEYS.map((slot) => {
+                  const p = selectedThumbs[slot.key];
+                  return (
+                    <div
+                      key={slot.key}
+                      style={{
+                        border: "1px solid rgba(255,255,255,0.10)",
+                        borderRadius: 14,
+                        padding: 10,
+                        minHeight: 140,
+                        display: "grid",
+                        gap: 8,
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: 12,
+                          opacity: 0.85,
+                          letterSpacing: "0.10em",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {slot.label.replace("Thumbnail: ", "")}
+                      </div>
+
+                      {p ? (
+                        <button
+                          type="button"
+                          onClick={() => openLightbox(p.url, slot.label)}
+                          style={{
+                            padding: 0,
+                            border: "none",
+                            background: "transparent",
+                            cursor: "pointer",
+                          }}
+                          title="Click to preview"
+                        >
+                          <img
+                            src={p.url}
+                            alt={slot.label}
+                            style={{
+                              width: "100%",
+                              height: 90,
+                              objectFit: "cover",
+                              borderRadius: 12,
+                              border: "1px solid rgba(255,255,255,0.12)",
+                              display: "block",
+                            }}
+                          />
+                        </button>
+                      ) : (
+                        <div style={{ opacity: 0.55, fontSize: 13 }}>
+                          Not selected yet
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
             </div>
 
@@ -533,7 +651,7 @@ export default function AdminPhotosPage() {
                   style={{
                     width: "100%",
                     borderCollapse: "collapse",
-                    minWidth: 980,
+                    minWidth: 1180,
                   }}
                 >
                   <thead>
@@ -543,6 +661,7 @@ export default function AdminPhotosPage() {
                       <th style={thDark}>View</th>
                       <th style={thDark}>Fav</th>
                       <th style={thDark}>Content</th>
+                      <th style={thDark}>Board</th>
                       <th style={thDark}>Link</th>
                       <th style={thDark}>Actions</th>
                     </tr>
@@ -592,6 +711,25 @@ export default function AdminPhotosPage() {
                           {p.content || ""}
                         </td>
 
+                        {/* ✅ Thumbnail selector */}
+                        <td style={tdDark}>
+                          <select
+                            value={p.boardKey || ""}
+                            onChange={(e) =>
+                              setBoardKey(p._id, e.target.value || null)
+                            }
+                            style={selectDark}
+                            title="Choose thumbnail slot"
+                          >
+                            <option value="">(not a thumbnail)</option>
+                            {BOARD_KEYS.map((s) => (
+                              <option key={s.key} value={s.key}>
+                                {s.label}
+                              </option>
+                            ))}
+                          </select>
+                        </td>
+
                         <td style={tdDark}>
                           <a
                             href={p.url}
@@ -622,7 +760,8 @@ export default function AdminPhotosPage() {
           </div>
 
           <p style={{ marginTop: 14, opacity: 0.6, fontSize: 12 }}>
-            Tip: Click any thumbnail to preview it larger.
+            Tip: Click any thumbnail to preview it larger. Use the “Board”
+            dropdown to pick the 4 PortfolioBoard thumbnails.
           </p>
         </div>
       </div>
@@ -709,3 +848,17 @@ const tdDark = {
   fontSize: 14,
   opacity: 0.92,
 };
+
+// ✅ server-side protection
+export async function getServerSideProps(context) {
+  const token = context.req.cookies?.admin_token || "";
+  const ok = isAdminFromToken(token);
+
+  if (!ok) {
+    return {
+      redirect: { destination: "/admin/login", permanent: false },
+    };
+  }
+
+  return { props: {} };
+}

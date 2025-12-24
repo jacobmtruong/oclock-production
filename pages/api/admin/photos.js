@@ -2,58 +2,26 @@ import dbConnect from "../../../lib/mongodb";
 import Photo from "../../../models/Photo";
 import { isAdminFromToken } from "../../../lib/adminAuth";
 
-function getCookie(req, name) {
-  const cookies = req.headers.cookie || "";
-  const parts = cookies.split(";").map((c) => c.trim());
-  const found = parts.find((c) => c.startsWith(`${name}=`));
-  return found ? decodeURIComponent(found.split("=").slice(1).join("=")) : "";
-}
-
-function requireAdmin(req, res) {
-  const token = getCookie(req, "admin_token");
-  const ok = token && isAdminFromToken(token);
-  if (!ok) {
-    res.status(401).json({ message: "Unauthorized" });
-    return false;
-  }
-  return true;
-}
-
-const VALID_CATEGORIES = [
-  "food",
-  "beverage",
-  "product",
-  "architecture",
-  "lifestyle",
-];
-const VALID_VIEWS = ["landscape", "portrait"];
-
 export default async function handler(req, res) {
-  if (!requireAdmin(req, res)) return;
+  // ✅ protect all admin photo actions
+  const token = req.cookies?.admin_token || "";
+  if (!isAdminFromToken(token)) {
+    return res.status(401).json({ ok: false, message: "Unauthorized" });
+  }
 
   await dbConnect();
 
-  // ✅ GET: list all photos (admin table)
+  // GET: list all photos
   if (req.method === "GET") {
-    const photos = await Photo.find({}).sort({ createdAt: -1 });
+    const photos = await Photo.find({}).sort({ createdAt: -1 }).lean();
     return res.status(200).json(photos);
   }
 
-  // ✅ POST: create photo
+  // POST: add photo
   if (req.method === "POST") {
-    const { url, content, category, view, favorite } = req.body;
-
-    if (!url || !category || !view) {
-      return res
-        .status(400)
-        .json({ message: "Missing fields: url, category, view" });
-    }
-    if (!VALID_CATEGORIES.includes(category)) {
-      return res.status(400).json({ message: "Invalid category" });
-    }
-    if (!VALID_VIEWS.includes(view)) {
-      return res.status(400).json({ message: "Invalid view" });
-    }
+    const { url, content, category, view, favorite } = req.body || {};
+    if (!url)
+      return res.status(400).json({ ok: false, message: "Missing url" });
 
     const created = await Photo.create({
       url,
@@ -63,17 +31,48 @@ export default async function handler(req, res) {
       favorite: !!favorite,
     });
 
-    return res.status(201).json(created);
+    return res.status(201).json({ ok: true, photo: created });
   }
 
-  // ✅ DELETE: delete by id in query string
+  // DELETE: remove photo
   if (req.method === "DELETE") {
     const { id } = req.query;
-    if (!id) return res.status(400).json({ message: "Missing id" });
+    if (!id) return res.status(400).json({ ok: false, message: "Missing id" });
 
     await Photo.findByIdAndDelete(id);
-    return res.status(200).json({ message: "Deleted" });
+    return res.status(200).json({ ok: true });
   }
 
-  return res.status(405).json({ message: "Method not allowed" });
+  // ✅ PATCH: assign/unassign thumbnail slot
+  if (req.method === "PATCH") {
+    const { id, boardKey } = req.body || {};
+    if (!id) return res.status(400).json({ ok: false, message: "Missing id" });
+
+    const allowed = [null, "", "fnb", "product", "architecture", "lifestyle"];
+    if (!allowed.includes(boardKey)) {
+      return res.status(400).json({ ok: false, message: "Invalid boardKey" });
+    }
+
+    // clear existing slot owner
+    if (boardKey) {
+      await Photo.updateMany({ boardKey }, { $set: { boardKey: null } });
+    }
+
+    const updated = await Photo.findByIdAndUpdate(
+      id,
+      { $set: { boardKey: boardKey || null } },
+      { new: true, runValidators: true }
+    );
+
+    if (!updated) {
+      return res.status(404).json({ ok: false, message: "Photo not found" });
+    }
+
+    // ✅ return the updated document including boardKey
+    return res.status(200).json({ ok: true, photo: updated });
+  }
+
+  // fallback
+  res.setHeader("Allow", ["GET", "POST", "DELETE", "PATCH"]);
+  return res.status(405).json({ ok: false, message: "Method not allowed" });
 }

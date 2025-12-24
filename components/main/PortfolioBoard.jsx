@@ -23,24 +23,48 @@ const itemVariants = {
 };
 
 const Portfolio = () => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]); // ✅ array default
   const [isLoading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    setLoading(true);
+    let alive = true;
 
-    fetch("/api/photography/portfoliocards")
-      .then((res) => res.json())
-      .then((json) => {
-        setData(json);
-        setLoading(false);
-      })
-      .catch((err) => {
+    const load = async () => {
+      setLoading(true);
+      setError("");
+
+      try {
+        const res = await fetch("/api/seed/portfoliocards");
+        const json = await res.json();
+
+        if (!alive) return;
+
+        if (!res.ok) {
+          setError(json?.message || "Failed to load portfolio cards");
+          setData([]);
+          console.log(setData);
+
+          return;
+        }
+
+        setData(Array.isArray(json) ? json : []);
+      } catch (err) {
+        if (!alive) return;
         console.log(err);
+        setError("Network error");
+        setData([]);
+      } finally {
+        if (!alive) return;
         setLoading(false);
-      });
+      }
+    };
 
-    // ✅ run once (prevents infinite fetch loop)
+    load();
+
+    return () => {
+      alive = false;
+    };
   }, []);
 
   return (
@@ -65,24 +89,26 @@ const Portfolio = () => {
       >
         {isLoading && <p style={{ color: "white" }}>Loading...</p>}
 
-        {data &&
-          data.map((card) => (
-            <motion.div key={card.id} variants={itemVariants}>
-              <Link
-                href={`/portfolio/${card.slug}`}
-                className={classes.cardlink}
-              >
-                <div className={classes.cardcover}>
-                  <img
-                    src={card.url}
-                    className={classes.card}
-                    alt={card.content}
-                  />
-                  <p className={classes.content}>{card.content}</p>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
+        {error && <p style={{ color: "crimson" }}>{error}</p>}
+
+        {!isLoading && !error && data.length === 0 && (
+          <p style={{ color: "white" }}>No portfolio cards found.</p>
+        )}
+
+        {data.map((card) => (
+          <motion.div key={card._id || card.id} variants={itemVariants}>
+            <Link href={`/portfolio/${card.slug}`} className={classes.cardlink}>
+              <div className={classes.cardcover}>
+                <img
+                  src={card.url}
+                  className={classes.card}
+                  alt={card.content}
+                />
+                <p className={classes.content}>{card.content}</p>
+              </div>
+            </Link>
+          </motion.div>
+        ))}
       </motion.div>
 
       <Link href="/contact" className={classes.getintouch}>
