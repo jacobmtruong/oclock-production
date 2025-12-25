@@ -1,24 +1,23 @@
 .container {
   display: flex;
-  justify-content: center;
   align-items: center;
   gap: 1vh;
 }
 
 /* wrapper controls size and removes odd columns */
 .iconWrap {
-  width: 8vh;
-  height: 8vh;
+  width: 64px; /* ✅ desktop nav-safe */
+  height: 64px;
   position: relative;
   flex: 0 0 auto;
   display: block;
-  overflow: hidden; /* just in case */
-  background: transparent; /* prevent any gray background */
+  overflow: hidden;
+  background: transparent;
 }
 
 .image {
   object-fit: contain;
-  display: block; /* prevents baseline gaps */
+  display: block;
   animation: rotation 50s infinite linear;
 }
 
@@ -40,22 +39,22 @@
   text-decoration: none;
 }
 
-@media (max-width: 480px) {
+/* ---------- Tablet ---------- */
+@media (max-width: 800px) {
   .iconWrap {
-    width: 50vw;
-    height: 50vw;
-  }
-  .text {
-    display: none;
+    width: 52px;
+    height: 52px;
   }
 }
 
-@media (max-width: 800px) {
+/* ---------- Mobile ---------- */
+@media (max-width: 480px) {
   .iconWrap {
-    width: 30vw;
-    height: 30vw;
+    width: 100px; /* ✅ hamburger-friendly */
+    height: 100px;
   }
+
   .text {
-    display: none;
+    font-size: 15px;
   }
 }

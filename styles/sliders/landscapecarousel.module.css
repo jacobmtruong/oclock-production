@@ -73,7 +73,7 @@
   .container {
     gap: 5vh;
     background-color: black;
-    padding: 10vh 0vh;
+    padding: 0vh 0vh 10vh 0vh;
   }
 
   .carousel {

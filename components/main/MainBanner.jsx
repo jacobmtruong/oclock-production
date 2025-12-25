@@ -4,20 +4,30 @@ import OclockIcon from "../main/OclockIcon";
 import Image from "next/image";
 import igicon from "../../styles/images/ig-icon.png";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 export const MainBanner = () => {
   const router = useRouter();
   const currentRoute = router.pathname;
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // ✅ close menu on route change
+  useEffect(() => {
+    const handleRouteChange = () => setMenuOpen(false);
+    router.events.on("routeChangeStart", handleRouteChange);
+    return () => router.events.off("routeChangeStart", handleRouteChange);
+  }, [router.events]);
+
   return (
     <div className={classes.maincontainer}>
       <div className={classes.navcontainer}>
-        <Link href="/">
+        {/* Logo */}
+        <Link href="/" className={classes.logoLink}>
           <OclockIcon />
         </Link>
+
+        {/* Desktop Nav */}
         <ul className={classes.navbar}>
-          {/* <li>
-            <Link href="">Home</Link>
-          </li> */}
           <li>
             <Link
               href="/portfolio"
@@ -30,6 +40,7 @@ export const MainBanner = () => {
               Portfolio
             </Link>
           </li>
+
           <li>
             <Link
               href="/about"
@@ -51,16 +62,83 @@ export const MainBanner = () => {
               Contact
             </Link>
           </li>
+
+          {/* Desktop only Instagram */}
           <Link
-            href="https://www.instagram.com/oclock.production?igsh=MTMwcmhkMHB3ajZ3Mw=="
+            href="https://www.instagram.com/oclock.production"
             className={classes.instagram}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Image src={igicon} className={classes.image} alt="igicon" />
+            <Image src={igicon} className={classes.image} alt="Instagram" />
           </Link>
         </ul>
+
+        {/* Hamburger (tablet/mobile) */}
+        <button
+          type="button"
+          className={classes.hamburger}
+          onClick={() => setMenuOpen((prev) => !prev)}
+          aria-label="Toggle menu"
+          aria-expanded={menuOpen}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
       </div>
+
+      {/* ✅ Backdrop: click outside closes menu */}
+      {menuOpen && (
+        <div
+          className={classes.backdrop}
+          onClick={() => setMenuOpen(false)}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* ✅ Drawer/Menu: prevent click inside from closing */}
+      {menuOpen && (
+        <div
+          className={classes.mobileMenu}
+          onClick={(e) => e.stopPropagation()}
+        >
+          <Link
+            href="/portfolio"
+            className={classes.mobileLink}
+            onClick={() => setMenuOpen(false)}
+          >
+            Portfolio
+          </Link>
+
+          <Link
+            href="/about"
+            className={classes.mobileLink}
+            onClick={() => setMenuOpen(false)}
+          >
+            About
+          </Link>
+
+          <Link
+            href="/contact"
+            className={classes.mobileLink}
+            onClick={() => setMenuOpen(false)}
+          >
+            Contact
+          </Link>
+
+          {/* Instagram inside hamburger */}
+          <div className={classes.mobileInstagram}>
+            <Link
+              href="https://www.instagram.com/oclock.production"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image src={igicon} alt="Instagram" width={28} height={28} />
+            </Link>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
