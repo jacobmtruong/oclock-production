@@ -50,11 +50,11 @@
 /* ---------- Mobile ---------- */
 @media (max-width: 480px) {
   .iconWrap {
-    width: 100px; /* ✅ hamburger-friendly */
-    height: 100px;
+    width: 130px; /* ✅ hamburger-friendly */
+    height: 130px;
   }
 
   .text {
-    font-size: 15px;
+    display: none;
   }
 }

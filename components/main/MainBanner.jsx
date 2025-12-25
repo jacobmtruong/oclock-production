@@ -21,12 +21,38 @@ export const MainBanner = () => {
   return (
     <div className={classes.maincontainer}>
       <div className={classes.navcontainer}>
-        {/* Logo */}
-        <Link href="/" className={classes.logoLink}>
+        {/* LEFT group (tablet/mobile) */}
+        <div className={classes.leftGroup}>
+          <button
+            type="button"
+            className={classes.hamburger}
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="Toggle menu"
+            aria-expanded={menuOpen}
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+
+        {/* CENTER logo (all sizes) */}
+        <Link href="/" className={classes.logoCenter} aria-label="Home">
           <OclockIcon />
         </Link>
 
-        {/* Desktop Nav */}
+        {/* RIGHT instagram (tablet/mobile - right) */}
+        <Link
+          href="https://www.instagram.com/oclock.production"
+          className={classes.igRight}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <Image src={igicon} className={classes.image} alt="Instagram" />
+        </Link>
+
+        {/* Desktop Nav (unchanged design) */}
         <ul className={classes.navbar}>
           <li>
             <Link
@@ -63,7 +89,7 @@ export const MainBanner = () => {
             </Link>
           </li>
 
-          {/* Desktop only Instagram */}
+          {/* Desktop only Instagram (keep in navbar as before) */}
           <Link
             href="https://www.instagram.com/oclock.production"
             className={classes.instagram}
@@ -73,19 +99,6 @@ export const MainBanner = () => {
             <Image src={igicon} className={classes.image} alt="Instagram" />
           </Link>
         </ul>
-
-        {/* Hamburger (tablet/mobile) */}
-        <button
-          type="button"
-          className={classes.hamburger}
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="Toggle menu"
-          aria-expanded={menuOpen}
-        >
-          <span />
-          <span />
-          <span />
-        </button>
       </div>
 
       {/* ✅ Backdrop: click outside closes menu */}
@@ -126,17 +139,6 @@ export const MainBanner = () => {
           >
             Contact
           </Link>
-
-          {/* Instagram inside hamburger */}
-          <div className={classes.mobileInstagram}>
-            <Link
-              href="https://www.instagram.com/oclock.production"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <Image src={igicon} alt="Instagram" width={28} height={28} />
-            </Link>
-          </div>
         </div>
       )}
     </div>

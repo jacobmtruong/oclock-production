@@ -5,11 +5,13 @@
   position: relative;
 }
 
+/* NAV */
 .navcontainer {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 2vh;
+  padding: 4vh;
+  position: relative;
 }
 
 .navbar {
@@ -29,12 +31,10 @@
   position: relative;
 }
 
-/* Specific styles for non-active links */
 .nonActive {
   color: white;
 }
 
-/* Specific styles for active links */
 .active {
   border-bottom: 2px solid white;
 }
@@ -68,6 +68,7 @@
   justify-content: center;
 }
 
+/* Banner bits (unchanged) */
 .banner {
   background-color: black;
   background-image: url("https://live.staticflickr.com/65535/52694050803_38ddde19fa_h.jpg");
@@ -100,6 +101,27 @@
   text-decoration: none;
 }
 
+/* ---------- NEW: left/center/right groups (tablet/mobile) ---------- */
+.leftGroup {
+  display: none; /* only show on tablet/mobile */
+  align-items: center;
+  gap: 12px;
+  z-index: 1002; /* keep above backdrop */
+}
+
+.logoCenter {
+  display: none; /* only show on tablet/mobile */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1001;
+}
+
+.igRight {
+  display: none; /* only show on tablet/mobile */
+  z-index: 1002;
+}
+
 /* ---------- Hamburger ---------- */
 .hamburger {
   display: none;
@@ -110,7 +132,7 @@
   flex-direction: column;
   gap: 6px;
   position: relative;
-  z-index: 1001; /* ✅ above drawer */
+  z-index: 1003;
 }
 
 .hamburger span {
@@ -120,48 +142,38 @@
   transition: transform 0.25s ease, opacity 0.25s ease;
 }
 
-/* ---------- Drawer Backdrop ---------- */
+/* ---------- Backdrop ---------- */
 .backdrop {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.45);
-  z-index: 1000; /* ✅ under hamburger, above page */
+  z-index: 1000;
 }
 
-/* ---------- Mobile Drawer (comes from right) ---------- */
+/* ---------- Mobile Drawer ---------- */
 .mobileMenu {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0; /* ✅ was right: 0 */
   height: 100vh;
-  width: 50%;
+  width: 60%;
   max-width: 360px;
   background: rgba(0, 0, 0, 0.153);
   backdrop-filter: blur(10px);
 
-  padding: 96px 28px 28px;
-  z-index: 1000;
+  padding: 128px 28px 28px;
+  z-index: 1001;
 
   display: flex;
   flex-direction: column;
   gap: 22px;
 
-  /* nice slide-in animation */
-  transform: translateX(0);
-  animation: slideIn 0.22s ease-out;
+  animation: slideInLeft 0.22s ease-out;
 }
 
-.mobileInstagram {
-  margin-top: auto;
-  padding-top: 28px;
-  border-top: 1px solid rgba(255, 255, 255, 0.15);
-  display: flex;
-  justify-content: center;
-}
-
-@keyframes slideIn {
+@keyframes slideInLeft {
   from {
-    transform: translateX(12px);
+    transform: translateX(-12px); /* ✅ negative to come from left */
     opacity: 0.6;
   }
   to {
@@ -187,27 +199,43 @@
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
+  /* hide desktop nav */
   .navbar {
     display: none;
+  }
+
+  /* show tablet/mobile layout */
+  .navcontainer {
+    justify-content: space-between;
+    padding: 16px 20px;
+  }
+
+  .leftGroup {
+    display: flex;
+  }
+
+  .logoCenter {
+    display: inline-flex;
+  }
+
+  .igRight {
+    display: inline-flex;
+    align-items: center;
   }
 
   .hamburger {
     display: flex;
   }
 
+  /* this one is for desktop navbar only */
   .instagram {
     display: none;
-  }
-
-  .navcontainer {
-    justify-content: space-between;
-    padding: 16px 20px;
   }
 }
 
 @media (max-width: 800px) {
   .banner {
-    height: 60vh;
+    display: none;
   }
 
   .title {
@@ -218,12 +246,17 @@
   .title p {
     font-size: 56px;
   }
+
+  .image {
+    width: 24px;
+  }
 }
 
 @media (max-width: 480px) {
-  .maincontainer {
-    padding: 2vh 0vh 3vh 0vh;
+  .navcontainer {
+    height: 180px;
   }
+
   .banner {
     display: none;
   }
@@ -235,5 +268,9 @@
 
   .title p {
     font-size: 42px;
+  }
+
+  .image {
+    width: 25px;
   }
 }
