@@ -1,9 +1,10 @@
 .container {
   display: flex;
   align-items: center;
-  gap: 1vh;
+  gap: 10px; /* use px instead of vh */
+  flex-wrap: nowrap; /* ✅ prevent wrapping */
+  white-space: nowrap; /* ✅ keep PR + icon + DUCTION together */
 }
-å
 
 /* wrapper controls size and removes odd columns */
 .iconWrap {
