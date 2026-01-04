@@ -3,6 +3,7 @@
   align-items: center;
   gap: 1vh;
 }
+å
 
 /* wrapper controls size and removes odd columns */
 .iconWrap {
@@ -50,8 +51,8 @@
 /* ---------- Mobile ---------- */
 @media (max-width: 480px) {
   .iconWrap {
-    width: 130px; /* ✅ hamburger-friendly */
-    height: 130px;
+    width: 60px; /* ✅ hamburger-friendly */
+    height: 60px;
   }
 
   .text {

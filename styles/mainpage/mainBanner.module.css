@@ -160,10 +160,8 @@
   max-width: 360px;
   background: rgba(0, 0, 0, 0.153);
   backdrop-filter: blur(10px);
-
   padding: 128px 28px 28px;
   z-index: 1001;
-
   display: flex;
   flex-direction: column;
   gap: 22px;
@@ -254,7 +252,7 @@
 
 @media (max-width: 480px) {
   .navcontainer {
-    height: 180px;
+    height: 110px;
   }
 
   .banner {

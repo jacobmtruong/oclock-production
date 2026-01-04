@@ -35,7 +35,6 @@ export const MainBanner = () => {
             <span />
           </button>
         </div>
-
         {/* CENTER logo (all sizes) */}
         <Link href="/" className={classes.logoCenter} aria-label="Home">
           <OclockIcon />
