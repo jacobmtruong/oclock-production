@@ -204,8 +204,12 @@
 
   /* show tablet/mobile layout */
   .navcontainer {
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.63);
     justify-content: space-between;
-    padding: 16px 20px;
+    padding: 30px 20px;
+    position: fixed;
+    z-index: 1003;
   }
 
   .leftGroup {
@@ -231,7 +235,7 @@
   }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .banner {
     display: none;
   }

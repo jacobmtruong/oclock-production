@@ -69,13 +69,13 @@
   border: 2px solid black;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
   .container {
-    padding: 0;
+    padding: 99px 0px 0px 0px;
     gap: 0;
   }
   .carousel {
-    width: 100%;
+    width: 100vw;
     height: 60vh;
   }
   .content {
