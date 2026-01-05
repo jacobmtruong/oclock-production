@@ -1,6 +1,7 @@
 import Head from "next/head";
 import "@nextcss/reset";
 import { useMemo, useState, useCallback } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { MainBanner } from "../components/main/MainBanner";
 import ImageBannerMain from "../components/main/ImageBannerMain";
@@ -29,10 +30,27 @@ export default function Home() {
       </Head>
 
       {/* ✅ show loader OVER the page, but keep page mounted so effects run */}
-      {!ready && <FullPageLoader />}
+      <AnimatePresence>
+        {!ready && (
+          <motion.div
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.45, ease: "easeOut" }}
+            style={{ position: "fixed", inset: 0, zIndex: 9999 }}
+          >
+            <FullPageLoader />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Optional: prevent user interaction while loading */}
-      <div style={{ pointerEvents: ready ? "auto" : "none" }}>
+      <div
+        style={{
+          pointerEvents: ready ? "auto" : "none",
+          visibility: ready ? "visible" : "hidden",
+        }}
+      >
         <MainBanner />
         <ImageBannerMain />
 
