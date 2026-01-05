@@ -1,6 +1,6 @@
 import Head from "next/head";
 import "@nextcss/reset";
-import { useEffect, useState } from "react";
+import { useMemo, useState, useCallback } from "react";
 
 import { MainBanner } from "../components/main/MainBanner";
 import ImageBannerMain from "../components/main/ImageBannerMain";
@@ -12,35 +12,14 @@ import Footer from "../components/main/Footer";
 import FullPageLoader from "../components/ui/FullPageLoader";
 
 export default function Home() {
-  const [ready, setReady] = useState(false);
+  const TOTAL = useMemo(() => 2, []);
+  const [readyCount, setReadyCount] = useState(0);
 
-  useEffect(() => {
-    let cancelled = false;
+  const markReady = useCallback(() => {
+    setReadyCount((c) => (c < TOTAL ? c + 1 : c));
+  }, [TOTAL]);
 
-    // If everything already loaded (bfcache / fast reload)
-    if (document.readyState === "complete") {
-      // small delay prevents flash on fast connections
-      setTimeout(() => {
-        if (!cancelled) setReady(true);
-      }, 250);
-      return;
-    }
-
-    const onLoad = () => {
-      // Optional: small delay so carousel has time to mount smoothly
-      setTimeout(() => {
-        if (!cancelled) setReady(true);
-      }, 250);
-    };
-
-    window.addEventListener("load", onLoad);
-    return () => {
-      cancelled = true;
-      window.removeEventListener("load", onLoad);
-    };
-  }, []);
-
-  if (!ready) return <FullPageLoader />;
+  const ready = readyCount >= TOTAL;
 
   return (
     <>
@@ -49,12 +28,20 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <MainBanner />
-      <ImageBannerMain />
-      <LandscapeCarousel />
-      <TextBanner />
-      <Portfolio />
-      <Footer />
+      {/* ✅ show loader OVER the page, but keep page mounted so effects run */}
+      {!ready && <FullPageLoader />}
+
+      {/* Optional: prevent user interaction while loading */}
+      <div style={{ pointerEvents: ready ? "auto" : "none" }}>
+        <MainBanner />
+        <ImageBannerMain />
+
+        <LandscapeCarousel onReady={markReady} />
+        <TextBanner />
+        <Portfolio onReady={markReady} />
+
+        <Footer />
+      </div>
     </>
   );
 }

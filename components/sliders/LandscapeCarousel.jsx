@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import classes from "../../styles/sliders/landscapecarousel.module.css";
 import { motion } from "framer-motion";
@@ -13,9 +13,17 @@ const fadeUp = {
   },
 };
 
-export const LandscapeCarousel = () => {
+export const LandscapeCarousel = ({ onReady }) => {
   const [data, setData] = useState(null);
   const [isLoading, setLoading] = useState(false);
+
+  // ✅ ensure onReady is called only once
+  const didReportReady = useRef(false);
+  const reportReadyOnce = () => {
+    if (didReportReady.current) return;
+    didReportReady.current = true;
+    onReady?.();
+  };
 
   useEffect(() => {
     setLoading(true);
@@ -24,11 +32,18 @@ export const LandscapeCarousel = () => {
       .then((json) => {
         setData(json);
         setLoading(false);
+
+        // ✅ consider "ready" when data is received (even if empty array)
+        reportReadyOnce();
       })
       .catch((err) => {
         console.error(err);
         setLoading(false);
+
+        // ✅ still report ready so global loader won't hang forever
+        reportReadyOnce();
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -80,3 +95,5 @@ export const LandscapeCarousel = () => {
     </motion.div>
   );
 };
+
+export default LandscapeCarousel;

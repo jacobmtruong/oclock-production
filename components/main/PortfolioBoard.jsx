@@ -1,6 +1,6 @@
 import classes from "../../styles/mainpage/portfolioboard.module.css";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -22,10 +22,18 @@ const itemVariants = {
   },
 };
 
-const Portfolio = () => {
+const Portfolio = ({ onReady }) => {
   const [data, setData] = useState([]); // ✅ array default
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  // ✅ ensure onReady is called only once
+  const didReportReady = useRef(false);
+  const reportReadyOnce = () => {
+    if (didReportReady.current) return;
+    didReportReady.current = true;
+    onReady?.();
+  };
 
   useEffect(() => {
     let alive = true;
@@ -43,17 +51,21 @@ const Portfolio = () => {
         if (!res.ok) {
           setError(json?.message || "Failed to load portfolio cards");
           setData([]);
-          console.log(setData);
-
+          reportReadyOnce(); // ✅ stop global loader even on error
           return;
         }
 
         setData(Array.isArray(json) ? json : []);
+
+        // ✅ ready when data arrives (even if empty)
+        reportReadyOnce();
       } catch (err) {
         if (!alive) return;
         console.log(err);
         setError("Network error");
         setData([]);
+
+        reportReadyOnce(); // ✅ stop global loader even on error
       } finally {
         if (!alive) return;
         setLoading(false);
@@ -65,6 +77,7 @@ const Portfolio = () => {
     return () => {
       alive = false;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
