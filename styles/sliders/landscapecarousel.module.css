@@ -91,7 +91,7 @@
   .container {
     gap: 5vh;
     background-color: black;
-    padding: 0vh 0vh 10vh 0vh;
+    padding: 16vh 0vh 16vh 0vh;
   }
 
   .carousel {
@@ -110,17 +110,19 @@
   }
 
   .title {
+    width: 100%;
     font-size: 35px;
   }
 
   .content {
     width: 80%;
+    margin: 0;
   }
 
   .content p:not(.title) {
     text-align: justify;
     width: 100%;
-    max-width: 100%;
+    max-width: 70%;
     align-self: flex-end;
     overflow-wrap: anywhere;
   }
