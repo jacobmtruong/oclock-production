@@ -9,7 +9,7 @@
 .navcontainer {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: flex-start; /* ✅ */
   padding: 4vh;
   position: relative;
 }
@@ -19,6 +19,7 @@
   padding: 0;
   margin: 0;
   gap: 50px;
+  margin-left: auto; /* ✅ pushes the whole navbar to the right */
 }
 
 .navbar a {
@@ -110,10 +111,8 @@
 }
 
 .logoCenter {
-  display: none; /* only show on tablet/mobile */
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  display: flex; /* used on all sizes */
+  transform: translateX(-50%); /* ✅ needed for mobile centering */
   z-index: 1001;
 }
 
@@ -195,11 +194,23 @@
   padding-top: 18px;
 }
 
+/* ✅ DESKTOP ONLY FIXES (do not affect mobile/tablet design) */
+@media (min-width: 1025px) {
+  .navcontainer {
+    padding: 28px 150px; /* ✅ stable desktop padding */
+  }
+
+  .logoCenter {
+    transform: none; /* ✅ prevents desktop logo from shifting off-screen */
+  }
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {
   /* hide desktop nav */
   .navbar {
     display: none;
+    margin-left: auto;
   }
 
   /* show tablet/mobile layout */
@@ -218,6 +229,9 @@
 
   .logoCenter {
     display: inline-flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* ✅ keep true center on mobile/tablet */
   }
 
   .igRight {
