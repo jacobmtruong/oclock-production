@@ -27,7 +27,7 @@
 .card {
   object-fit: cover;
   height: 40vh;
-  width: 800px;
+  width: 600px;
   border-radius: 6px;
   filter: opacity(0.7);
   transition: 0.2s linear;
@@ -44,7 +44,7 @@
 .content {
   color: white;
   margin: 0 auto;
-  font-size: 40px;
+  font-size: 35px;
   font-weight: 100;
   position: absolute;
   text-transform: uppercase;
